@@ -1,6 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { business } from "@/content/siteData.mjs";
+import { business, services } from "@/content/siteData.mjs";
 
 export const metadata = {
   title: "Contact",
@@ -38,11 +38,11 @@ export default function ContactPage() {
                 <option value="" disabled>
                   Select a service
                 </option>
-                <option>AC repair</option>
-                <option>Heating service</option>
-                <option>Maintenance</option>
-                <option>Installation quote</option>
-                <option>Emergency HVAC</option>
+                {services.map((service) => (
+                  <option key={service.slug} value={service.slug}>
+                    {service.title}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="field full">

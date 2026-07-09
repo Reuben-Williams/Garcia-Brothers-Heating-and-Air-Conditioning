@@ -19,6 +19,10 @@ export const navItems = [
 export const services = [
   {
     title: "AC Repair & Install",
+    slug: "ac-repair-install",
+    detailHref: "/services#ac-repair-install",
+    contactHref: "/contact?service=ac-repair-install",
+    ctaLabel: "Request cooling service",
     summary:
       "Troubleshooting, seasonal repair, and clean installation of efficient cooling systems.",
     detail:
@@ -27,6 +31,10 @@ export const services = [
   },
   {
     title: "Heating Services",
+    slug: "heating-services",
+    detailHref: "/services#heating-services",
+    contactHref: "/contact?service=heating-services",
+    ctaLabel: "Request heating service",
     summary:
       "Furnace repair, heat pump service, and heating equipment replacement for reliable winter comfort.",
     detail:
@@ -35,6 +43,10 @@ export const services = [
   },
   {
     title: "Maintenance Plans",
+    slug: "maintenance-plans",
+    detailHref: "/services#maintenance-plans",
+    contactHref: "/contact?service=maintenance-plans",
+    ctaLabel: "Request maintenance",
     summary:
       "Preventive tune-ups that reduce surprise breakdowns and keep HVAC equipment running efficiently.",
     detail:
@@ -43,6 +55,10 @@ export const services = [
   },
   {
     title: "Emergency HVAC",
+    slug: "emergency-hvac",
+    detailHref: "/services#emergency-hvac",
+    contactHref: "/contact?service=emergency-hvac",
+    ctaLabel: "Request emergency help",
     summary:
       "Rapid response for urgent heating or cooling failures when indoor comfort cannot wait.",
     detail:
@@ -52,6 +68,10 @@ export const services = [
   },
   {
     title: "Commercial Service",
+    slug: "commercial-service",
+    detailHref: "/services#commercial-service",
+    contactHref: "/contact?service=commercial-service",
+    ctaLabel: "Request commercial service",
     summary:
       "Light commercial system repair, rooftop equipment support, and building climate troubleshooting.",
     detail:
@@ -60,6 +80,10 @@ export const services = [
   },
   {
     title: "Indoor Air Quality",
+    slug: "indoor-air-quality",
+    detailHref: "/services#indoor-air-quality",
+    contactHref: "/contact?service=indoor-air-quality",
+    ctaLabel: "Request air-quality help",
     summary:
       "Filtration, ventilation, humidification, and air-quality upgrades that support cleaner indoor air.",
     detail:
