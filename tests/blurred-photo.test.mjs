@@ -28,8 +28,11 @@ test("blurred photos eagerly request a cache-versioned asset URL", () => {
   const component = readFileSync(files.component, "utf8");
 
   assert.match(component, /IMAGE_CACHE_VERSION/);
+  assert.match(component, /NEXT_PUBLIC_SITE_BASE_PATH/);
   assert.match(component, /versionedSrc/);
-  assert.match(component, /loading=\{priority \? undefined : "eager"\}/);
+  assert.match(component, /<img/);
+  assert.doesNotMatch(component, /next\/image/);
+  assert.match(component, /loading="eager"/);
 });
 
 test("project and feature photos render through BlurredPhoto", () => {

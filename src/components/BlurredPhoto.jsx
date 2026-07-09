@@ -1,6 +1,16 @@
-import Image from "next/image";
-
 const IMAGE_CACHE_VERSION = "20260709";
+const SITE_BASE_PATH = process.env.NEXT_PUBLIC_SITE_BASE_PATH || "";
+
+function withCacheVersion(src) {
+  const resolvedSrc =
+    SITE_BASE_PATH && src.startsWith("/") && !src.startsWith(SITE_BASE_PATH)
+      ? `${SITE_BASE_PATH}${src}`
+      : src;
+
+  return resolvedSrc.includes("?")
+    ? `${resolvedSrc}&v=${IMAGE_CACHE_VERSION}`
+    : `${resolvedSrc}?v=${IMAGE_CACHE_VERSION}`;
+}
 
 export default function BlurredPhoto({
   src,
@@ -10,29 +20,29 @@ export default function BlurredPhoto({
   className = "",
   children,
 }) {
-  const versionedSrc = src.includes("?")
-    ? `${src}&v=${IMAGE_CACHE_VERSION}`
-    : `${src}?v=${IMAGE_CACHE_VERSION}`;
+  const versionedSrc = withCacheVersion(src);
+  const fetchPriority = priority ? "high" : "auto";
 
   return (
     <div className={`blurred-photo ${className}`}>
-      <Image
-        className="blurred-photo-bg"
-        src={versionedSrc}
-        alt=""
-        fill
-        sizes={sizes}
+      <img
         aria-hidden="true"
-        loading={priority ? undefined : "eager"}
-      />
-      <Image
-        className="blurred-photo-main"
-        src={versionedSrc}
-        alt={alt}
-        fill
+        alt=""
+        className="blurred-photo-bg"
+        decoding="async"
+        fetchPriority={fetchPriority}
+        loading="eager"
         sizes={sizes}
-        priority={priority}
-        loading={priority ? undefined : "eager"}
+        src={versionedSrc}
+      />
+      <img
+        alt={alt}
+        className="blurred-photo-main"
+        decoding="async"
+        fetchPriority={fetchPriority}
+        loading="eager"
+        sizes={sizes}
+        src={versionedSrc}
       />
       {children ? <div className="blurred-photo-overlay">{children}</div> : null}
     </div>
