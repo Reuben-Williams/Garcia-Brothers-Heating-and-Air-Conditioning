@@ -24,6 +24,14 @@ test("blurred photo component exposes background and foreground image layers", (
   assert.match(css, /object-fit:\s*contain/);
 });
 
+test("blurred photos eagerly request a cache-versioned asset URL", () => {
+  const component = readFileSync(files.component, "utf8");
+
+  assert.match(component, /IMAGE_CACHE_VERSION/);
+  assert.match(component, /versionedSrc/);
+  assert.match(component, /loading=\{priority \? undefined : "eager"\}/);
+});
+
 test("project and feature photos render through BlurredPhoto", () => {
   for (const path of [files.gallery, files.carousel, files.home, files.about]) {
     const source = readFileSync(path, "utf8");
