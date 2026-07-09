@@ -1,0 +1,12 @@
+.next/
+out/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env*.local
+_image_contact_sheet.jpg
+_qa-*.png
+download*.png
+stitch_garcia_brothers_hvac_website/
