@@ -1,3 +1,4 @@
+import Link from "next/link";
 import BlurredPhoto from "@/components/BlurredPhoto";
 import { projectImages } from "@/content/siteData.mjs";
 
@@ -7,7 +8,13 @@ export default function ProjectGallery({ limit }) {
   return (
     <div className={limit ? "project-strip" : "gallery-grid"}>
       {images.map((project) => (
-        <article className="project-card" key={project.id}>
+        <Link
+          aria-label={`View project details for ${project.title}`}
+          className="project-card project-card-link"
+          href={`/projects#${project.id}`}
+          id={project.id}
+          key={project.id}
+        >
           <div className="project-thumb">
             <BlurredPhoto
               src={project.src}
@@ -23,7 +30,7 @@ export default function ProjectGallery({ limit }) {
             <h3>{project.title}</h3>
             <p>{project.summary}</p>
           </div>
-        </article>
+        </Link>
       ))}
     </div>
   );
