@@ -13,3 +13,11 @@ test("footer presents a modern contact-led layout", () => {
   assert.match(css, /\.footer-contact-list/);
   assert.match(css, /\.footer-service-links/);
 });
+
+test("footer brand stays readable on the dark footer background", () => {
+  const css = readFileSync("app/globals.css", "utf8");
+
+  assert.match(css, /\.footer\s+\.brand\s*\{/);
+  assert.match(css, /\.footer\s+\.brand\s*\{[^}]*color:\s*#fff/s);
+  assert.match(css, /\.footer\s+\.brand-mark\s*\{/);
+});

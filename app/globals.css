@@ -822,6 +822,15 @@ img {
   max-width: 390px;
 }
 
+.footer .brand {
+  color: #fff;
+}
+
+.footer .brand-mark {
+  color: var(--trust-navy);
+  background: var(--cooling-blue);
+}
+
 .footer h3,
 .footer h4 {
   margin: 0 0 14px;
