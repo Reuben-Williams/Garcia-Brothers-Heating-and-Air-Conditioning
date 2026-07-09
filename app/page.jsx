@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, Clock, Phone, ShieldCheck } from "lucide-react";
+import BlurredPhoto from "@/components/BlurredPhoto";
 import ProjectGallery from "@/components/ProjectGallery";
 import Reviews from "@/components/Reviews";
 import ServiceGrid from "@/components/ServiceGrid";
@@ -32,15 +32,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="hero-media">
-            <Image
+          <BlurredPhoto
+            className="hero-media"
               src="/projects/project-01.png"
               alt="Residential outdoor condenser installed on a clean exterior pad"
-              fill
               sizes="(max-width: 980px) 100vw, 54vw"
-              style={{ objectFit: "cover" }}
               priority
-            />
+          >
             <div className="hero-card">
               <span className="icon-chip">
                 <ShieldCheck size={24} />
@@ -50,7 +48,7 @@ export default function HomePage() {
                 <span>Real project photos from the Garcia Brothers folder.</span>
               </div>
             </div>
-          </div>
+          </BlurredPhoto>
         </div>
       </section>
 
@@ -74,12 +72,10 @@ export default function HomePage() {
       <section className="section dark-band">
         <div className="container split">
           <div className="media-frame">
-            <Image
+            <BlurredPhoto
               src="/projects/project-02.png"
               alt="Technician working around attic HVAC equipment"
-              fill
               sizes="(max-width: 980px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
             />
           </div>
           <div>

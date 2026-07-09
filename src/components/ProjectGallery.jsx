@@ -1,4 +1,4 @@
-import Image from "next/image";
+import BlurredPhoto from "@/components/BlurredPhoto";
 import { projectImages } from "@/content/siteData.mjs";
 
 export default function ProjectGallery({ limit }) {
@@ -9,16 +9,14 @@ export default function ProjectGallery({ limit }) {
       {images.map((project) => (
         <article className="project-card" key={project.id}>
           <div className="project-thumb">
-            <Image
+            <BlurredPhoto
               src={project.src}
               alt={project.alt}
-              fill
               sizes={
                 limit
                   ? "(max-width: 980px) 50vw, 25vw"
                   : "(max-width: 980px) 100vw, 33vw"
               }
-              style={{ objectFit: "cover" }}
             />
           </div>
           <div className="project-copy">

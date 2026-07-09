@@ -8,5 +8,6 @@ pnpm-debug.log*
 .env*.local
 _image_contact_sheet.jpg
 _qa-*.png
+_dev-server*.log
 download*.png
 stitch_garcia_brothers_hvac_website/

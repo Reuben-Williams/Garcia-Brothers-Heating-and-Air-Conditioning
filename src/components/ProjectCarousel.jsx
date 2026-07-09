@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import BlurredPhoto from "@/components/BlurredPhoto";
 
 export default function ProjectCarousel({ projects }) {
   const [index, setIndex] = useState(0);
@@ -19,12 +19,10 @@ export default function ProjectCarousel({ projects }) {
   return (
     <section className="carousel" aria-label="Featured project carousel">
       <div className="carousel-image">
-        <Image
+        <BlurredPhoto
           src={project.src}
           alt={project.alt}
-          fill
           sizes="(max-width: 980px) 100vw, 58vw"
-          style={{ objectFit: "cover" }}
           priority
         />
       </div>

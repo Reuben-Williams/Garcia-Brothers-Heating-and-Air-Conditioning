@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { BadgeCheck, ClipboardCheck, MapPin } from "lucide-react";
+import BlurredPhoto from "@/components/BlurredPhoto";
 import PageHero from "@/components/PageHero";
 
 export const metadata = {
@@ -47,12 +47,10 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="media-frame">
-            <Image
+            <BlurredPhoto
               src="/projects/project-23.png"
               alt="Basement HVAC ductwork and mechanical lines during service"
-              fill
               sizes="(max-width: 980px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
             />
           </div>
         </div>
