@@ -18,11 +18,11 @@ const body = Plus_Jakarta_Sans({
 
 export const metadata = {
   title: {
-    default: `${business.name} | HVAC Service Demo`,
+    default: `${business.name} | Newark HVAC Service`,
     template: `%s | ${business.shortName}`,
   },
   description:
-    "Static demo website for Garcia Brothers Heating & Air Conditioning, featuring HVAC services, project photos, reviews, and contact information.",
+    "Garcia Brothers Heating & Air Conditioning provides 24-hour residential HVAC service, furnace repair, heat pump installation, ductwork, AC repair, and indoor air-quality support in Newark, NJ.",
 };
 
 export default function RootLayout({ children }) {

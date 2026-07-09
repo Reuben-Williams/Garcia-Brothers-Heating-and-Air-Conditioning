@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Flame, Mail, MapPin, Phone, Wrench } from "lucide-react";
+import { Clock, Flame, MapPin, Phone, Star, Wrench } from "lucide-react";
 import { business, navItems, services } from "@/content/siteData.mjs";
 
 export default function Footer() {
@@ -13,8 +13,8 @@ export default function Footer() {
             </span>
             <h2>Need heating or cooling help?</h2>
             <p>
-              Call directly for urgent issues or send a service request with
-              the system details.
+              Call directly for urgent issues at any hour or send a service
+              request with the system details.
             </p>
           </div>
           <div className="footer-cta-actions">
@@ -37,8 +37,8 @@ export default function Footer() {
               <span>{business.name}</span>
             </h3>
             <p>
-              Dependable heating, cooling, and air-quality service with clean
-              workmanship and clear communication.
+              Family-owned heating, cooling, ductwork, and air-quality service
+              for Newark, East Orange, Belleville, and nearby Essex County homes.
             </p>
           </div>
 
@@ -70,19 +70,23 @@ export default function Footer() {
               <a href={business.phoneHref}>
                 <Phone size={16} /> {business.phoneDisplay}
               </a>
-              <a href={`mailto:${business.email}`}>
-                <Mail size={16} /> {business.email}
-              </a>
               <span>
-                <MapPin size={16} /> {business.serviceArea}
+                <MapPin size={16} /> {business.address}
+              </span>
+              <span>
+                <Clock size={16} /> {business.hoursSummary}
+              </span>
+              <span>
+                <Star size={16} /> {business.rating} stars from{" "}
+                {business.reviewCount} reviews
               </span>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 {business.name}. Licensed and insured demo site.</span>
-          <span>Built with real project photos for owner review.</span>
+          <span>(c) 2026 {business.name}. HVAC service in Newark, NJ.</span>
+          <span>{business.serviceArea}</span>
         </div>
       </div>
     </footer>

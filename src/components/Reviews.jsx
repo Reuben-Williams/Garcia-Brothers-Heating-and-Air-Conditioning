@@ -13,7 +13,7 @@ export default function Reviews({ limit }) {
               <Star key={index} size={18} fill="currentColor" />
             ))}
           </div>
-          <p>“{review.quote}”</p>
+          <p>"{review.quote}"</p>
           <h3>{review.name}</h3>
           <p>{review.location}</p>
         </article>

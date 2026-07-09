@@ -4,11 +4,9 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
 
-import {
-  navItems,
-  projectImages,
-  featuredProjects,
-} from "../src/content/siteData.mjs";
+import * as siteData from "../src/content/siteData.mjs";
+
+const { business, navItems, projectImages, featuredProjects, reviews } = siteData;
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -41,4 +39,45 @@ test("featured projects are a curated subset of available images", () => {
   for (const project of featuredProjects) {
     assert.equal(ids.has(project.id), true, `${project.id} is not in projectImages`);
   }
+});
+
+test("business profile uses verified Newark contact and reputation details", () => {
+  assert.equal(business.phoneDisplay, "(551) 379-0300");
+  assert.equal(business.phoneHref, "tel:+15513790300");
+  assert.equal(business.address, "42 S 17th St, Newark, NJ 07107");
+  assert.match(business.serviceArea, /Newark/);
+  assert.match(business.serviceArea, /East Orange/);
+  assert.match(business.serviceArea, /Belleville/);
+  assert.equal(business.rating, "4.8");
+  assert.equal(business.reviewCount, 53);
+  assert.match(business.reviewUrl, /^https:\/\/search\.google\.com\/local\/reviews/);
+});
+
+test("hours show daily 24 hour availability", () => {
+  const { hours } = siteData;
+
+  assert.ok(Array.isArray(hours));
+  assert.equal(hours.length, 7);
+  assert.deepEqual(new Set(hours.map((entry) => entry.value)), new Set(["Open 24 hours"]));
+});
+
+test("reviews contain named local customer details from the source material", () => {
+  const reviewNames = reviews.map((review) => review.name);
+
+  assert.ok(reviewNames.includes("Collin Soto"));
+  assert.ok(reviewNames.includes("Santiago Cantu"));
+  assert.ok(reviewNames.includes("Ruth11 H"));
+  assert.ok(reviews.some((review) => /Bryce/.test(review.quote)));
+  assert.ok(reviews.some((review) => /Peyton/.test(review.quote)));
+  assert.ok(reviews.some((review) => /Edwin/.test(review.quote)));
+});
+
+test("faqs answer concrete homeowner questions from reviews and operations", () => {
+  const { faqs } = siteData;
+
+  assert.ok(Array.isArray(faqs));
+  assert.ok(faqs.length >= 6);
+  assert.ok(faqs.some((faq) => /limited attic space/.test(faq.question)));
+  assert.ok(faqs.some((faq) => /holiday evening/.test(faq.question)));
+  assert.ok(faqs.some((faq) => /same evening/.test(faq.answer)));
 });

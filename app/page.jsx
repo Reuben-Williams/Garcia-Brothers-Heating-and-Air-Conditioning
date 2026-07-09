@@ -15,11 +15,11 @@ export default function HomePage() {
             <span className="eyebrow">
               <Clock size={18} /> 24/7 emergency service
             </span>
-            <h1>Expert HVAC service for homes and businesses.</h1>
+            <h1>Expert HVAC service for Newark-area homes.</h1>
             <p>
-              Garcia Brothers handles heating, cooling, maintenance, and
-              emergency calls with clean workmanship, practical diagnostics, and
-              straightforward communication.
+              Garcia Brothers Heating & Air Conditioning is a family-owned HVAC
+              contractor serving Newark, East Orange, Belleville, and nearby
+              Essex County communities with 24-hour heating and cooling support.
             </p>
             <div className="hero-actions">
               <a className="button primary" href={business.phoneHref}>
@@ -44,8 +44,8 @@ export default function HomePage() {
                 <ShieldCheck size={24} />
               </span>
               <div>
-                <strong>Clean installations, documented service</strong>
-                <span>Real project photos from the Garcia Brothers folder.</span>
+                <strong>{business.rating} stars from {business.reviewCount} reviews</strong>
+                <span>Open 24 hours every day for urgent HVAC calls.</span>
               </div>
             </div>
           </BlurredPhoto>
@@ -58,7 +58,8 @@ export default function HomePage() {
             <div>
               <h2>Heating and cooling services</h2>
               <p className="section-lead">
-                The core work customers expect from a dependable HVAC company.
+                Furnace replacement, heat pumps, ductwork, AC repair, emergency
+                response, and indoor air-quality support for residential systems.
               </p>
             </div>
             <Link className="button secondary" href="/services">
@@ -79,26 +80,26 @@ export default function HomePage() {
             />
           </div>
           <div>
-            <h2>Built around trust, access, and neat work.</h2>
+            <h2>Built for real Newark homes and tight mechanical spaces.</h2>
             <p>
-              HVAC work often happens in tight attics, basements, utility
-              closets, side yards, and finished rooms. The site uses real job
-              photos because prospective customers should see the actual kind
-              of work they are hiring for.
+              Customer reviews call out work in cramped attics, older basements,
+              and full ductwork replacements. Technicians Bryce, Edwin, Peyton,
+              Preston, Bryson, and Trenton are repeatedly mentioned for clear
+              explanations and careful service.
             </p>
             <div className="check-list">
               <div className="check-item">
                 <BadgeCheck size={22} />
                 <div>
-                  <h3>Residential and commercial service</h3>
-                  <p>Cooling, heating, maintenance, and light commercial calls.</p>
+                  <h3>Residential HVAC focus</h3>
+                  <p>Heating, cooling, ductwork, and air-quality work for local homes.</p>
                 </div>
               </div>
               <div className="check-item">
                 <BadgeCheck size={22} />
                 <div>
-                  <h3>Local project proof</h3>
-                  <p>Every major visual on this demo comes from the folder.</p>
+                  <h3>Review-backed workmanship</h3>
+                  <p>Named reviews highlight speed, communication, and technical skill.</p>
                 </div>
               </div>
             </div>
@@ -130,8 +131,7 @@ export default function HomePage() {
             <div>
               <h2>Customer feedback</h2>
               <p className="section-lead">
-                Short review examples for the demo until real testimonials are
-                available.
+                Named customer examples from Garcia Brothers review material.
               </p>
             </div>
           </div>

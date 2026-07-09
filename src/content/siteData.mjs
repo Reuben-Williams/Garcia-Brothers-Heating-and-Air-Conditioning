@@ -1,11 +1,26 @@
 export const business = {
   name: "Garcia Brothers Heating & Air Conditioning",
   shortName: "Garcia Brothers HVAC",
-  phoneDisplay: "(555) 123-4567",
-  phoneHref: "tel:+15551234567",
-  email: "service@garciabrothershvac.com",
-  serviceArea: "Residential and commercial customers across the local metro area",
+  phoneDisplay: "(551) 379-0300",
+  phoneHref: "tel:+15513790300",
+  address: "42 S 17th St, Newark, NJ 07107",
+  serviceArea: "Residential HVAC service across Newark, East Orange, Belleville, and nearby Essex County communities",
+  rating: "4.8",
+  reviewCount: 53,
+  reviewUrl:
+    "https://search.google.com/local/reviews?placeid=ChIJgbdlnxpTwokRK3T6ITHjqbQ",
+  hoursSummary: "Open 24 hours every day",
 };
+
+export const hours = [
+  { day: "Sunday", value: "Open 24 hours" },
+  { day: "Monday", value: "Open 24 hours" },
+  { day: "Tuesday", value: "Open 24 hours" },
+  { day: "Wednesday", value: "Open 24 hours" },
+  { day: "Thursday", value: "Open 24 hours" },
+  { day: "Friday", value: "Open 24 hours" },
+  { day: "Saturday", value: "Open 24 hours" },
+];
 
 export const navItems = [
   { label: "Home", href: "/" },
@@ -18,140 +33,198 @@ export const navItems = [
 
 export const services = [
   {
-    title: "AC Repair & Install",
-    slug: "ac-repair-install",
-    detailHref: "/services#ac-repair-install",
-    contactHref: "/contact?service=ac-repair-install",
-    ctaLabel: "Request cooling service",
-    heroLabel: "Cooling diagnostics and installs",
+    title: "Heater Repair & Furnace Replacement",
+    slug: "heater-repair-furnace-replacement",
+    detailHref: "/services#heater-repair-furnace-replacement",
+    contactHref: "/contact?service=heater-repair-furnace-replacement",
+    ctaLabel: "Request furnace service",
+    heroLabel: "Furnace repair and replacement",
     heroSummary:
-      "No-cool calls, condenser replacements, line routing, and practical cooling recommendations backed by real job-site photos.",
-    heroImage: {
-      src: "/projects/project-01.png",
-      alt: "Residential outdoor condenser installed on a clean exterior pad",
-    },
-    summary:
-      "Troubleshooting, seasonal repair, and clean installation of efficient cooling systems.",
-    detail:
-      "From no-cool calls to complete condenser replacement, the team handles cooling work with careful line routing, clean outdoor pads, and practical guidance on system performance.",
-    icon: "Snowflake",
-  },
-  {
-    title: "Heating Services",
-    slug: "heating-services",
-    detailHref: "/services#heating-services",
-    contactHref: "/contact?service=heating-services",
-    ctaLabel: "Request heating service",
-    heroLabel: "Heating repair and replacement",
-    heroSummary:
-      "Furnace and heat-pump service focused on safe operation, dependable heat, clean connections, and clear repair decisions.",
+      "Diagnosis, repair, old equipment removal, and complete heating-system replacement for Newark-area homes.",
     heroImage: {
       src: "/projects/project-19.png",
       alt: "Indoor furnace cabinet installed with clean connections and access",
     },
     summary:
-      "Furnace repair, heat pump service, and heating equipment replacement for reliable winter comfort.",
+      "Diagnosis, repair, and full replacement of gas or electric furnaces for Newark-area homes.",
     detail:
-      "Heating visits focus on safe operation, clear diagnostics, airflow, burner performance, and dependable repairs before cold weather exposes weak equipment.",
+      "The team handles heater failures, furnace diagnostics, old equipment removal, and complete heating-system replacement, including jobs where a failed furnace needs same-day attention.",
     icon: "Flame",
+    featured: true,
   },
   {
-    title: "Maintenance Plans",
-    slug: "maintenance-plans",
-    detailHref: "/services#maintenance-plans",
-    contactHref: "/contact?service=maintenance-plans",
-    ctaLabel: "Request maintenance",
-    heroLabel: "Preventive service visits",
+    title: "Heat Pump Installation & Cooling",
+    slug: "heat-pump-installation-cooling",
+    detailHref: "/services#heat-pump-installation-cooling",
+    contactHref: "/contact?service=heat-pump-installation-cooling",
+    ctaLabel: "Request heat pump service",
+    heroLabel: "Heat pump and cooling upgrades",
     heroSummary:
-      "Seasonal maintenance checks airflow, coils, drains, controls, and blower condition before small issues become urgent calls.",
+      "Heat pump installation and central cooling upgrades, including compact replacements for older furnace and air-handler setups.",
     heroImage: {
-      src: "/projects/project-07.png",
-      alt: "Close view of a blower wheel and fan housing during maintenance",
+      src: "/projects/project-05.png",
+      alt: "Ductless indoor air handler mounted above a window in a finished room",
     },
     summary:
-      "Preventive tune-ups that reduce surprise breakdowns and keep HVAC equipment running efficiently.",
+      "Heat pump sales, installation, and cooling-mode service for central air upgrades.",
     detail:
-      "Scheduled maintenance covers coils, filters, electrical checks, drains, controls, and system condition notes so owners can plan before small issues turn into major calls.",
+      "Garcia Brothers installs heat pumps and central cooling systems, including replacements for older furnace, air-handler, or AC setups that need a more compact and efficient layout.",
+    icon: "Snowflake",
+  },
+  {
+    title: "Ductwork Installation & Redesign",
+    slug: "ductwork-installation-redesign",
+    detailHref: "/services#ductwork-installation-redesign",
+    contactHref: "/contact?service=ductwork-installation-redesign",
+    ctaLabel: "Request ductwork service",
+    heroLabel: "Ductwork redesign and access solutions",
+    heroSummary:
+      "Removal, installation, and rerouting of duct systems for tight attics, older layouts, and uneven airflow.",
+    heroImage: {
+      src: "/projects/project-23.png",
+      alt: "Open ceiling framing with ductwork, refrigerant lines, and mechanical service work",
+    },
+    summary:
+      "Removal, installation, and rerouting of duct systems, including tight attic layouts.",
+    detail:
+      "Customer reviews describe the crew removing aging ductwork, redesigning runs, and solving cramped attic access problems that other contractors declined.",
     icon: "Wrench",
   },
   {
-    title: "Emergency HVAC",
-    slug: "emergency-hvac",
-    detailHref: "/services#emergency-hvac",
-    contactHref: "/contact?service=emergency-hvac",
-    ctaLabel: "Request emergency help",
-    heroLabel: "Urgent HVAC response",
+    title: "AC Repair & Tune-Ups",
+    slug: "ac-repair-tune-ups",
+    detailHref: "/services#ac-repair-tune-ups",
+    contactHref: "/contact?service=ac-repair-tune-ups",
+    ctaLabel: "Request AC service",
+    heroLabel: "AC diagnostics and tune-ups",
     heroSummary:
-      "Emergency support prioritizes comfort failures with direct communication, field diagnostics, and practical next-step recommendations.",
+      "Residential AC repair focused on refrigerant levels, airflow, thermostat compatibility, and clear repair options.",
+    heroImage: {
+      src: "/projects/project-01.png",
+      alt: "Residential outdoor condenser installed on a clean exterior pad",
+    },
+    summary:
+      "Air conditioning diagnostics and repair for residential systems in hot weather.",
+    detail:
+      "Cooling visits focus on refrigerant levels, airflow, thermostat compatibility, electrical behavior, and repair options before recommending full replacement.",
+    icon: "Snowflake",
+  },
+  {
+    title: "Emergency HVAC Service",
+    slug: "emergency-hvac-service",
+    detailHref: "/services#emergency-hvac-service",
+    contactHref: "/contact?service=emergency-hvac-service",
+    ctaLabel: "Request emergency help",
+    heroLabel: "24-hour emergency HVAC",
+    heroSummary:
+      "Round-the-clock heating and cooling support for system failures, weekends, holidays, and after-hours calls.",
     heroImage: {
       src: "/projects/project-02.png",
       alt: "Technician working around attic HVAC equipment and insulated line runs",
     },
     summary:
-      "Rapid response for urgent heating or cooling failures when indoor comfort cannot wait.",
+      "Round-the-clock heating and cooling help, including weekends and holidays.",
     detail:
-      "Priority dispatch helps restore critical heating and cooling, with direct communication and repair recommendations based on what the equipment actually needs.",
+      "The company maintains 24-hour availability every day of the week, with same-day response for urgent system failures whenever scheduling allows.",
     icon: "Siren",
-    featured: true,
   },
   {
-    title: "Commercial Service",
-    slug: "commercial-service",
-    detailHref: "/services#commercial-service",
-    contactHref: "/contact?service=commercial-service",
-    ctaLabel: "Request commercial service",
-    heroLabel: "Light commercial HVAC support",
-    heroSummary:
-      "Commercial service handles rooftop equipment, occupied spaces, uptime constraints, and documentation for repeatable building comfort.",
-    heroImage: {
-      src: "/projects/project-18.png",
-      alt: "Commercial rooftop HVAC unit with panels and service access points visible",
-    },
-    summary:
-      "Light commercial system repair, rooftop equipment support, and building climate troubleshooting.",
-    detail:
-      "Commercial work is handled with attention to uptime, access constraints, service documentation, and the practical needs of occupied spaces.",
-    icon: "Building2",
-  },
-  {
-    title: "Indoor Air Quality",
-    slug: "indoor-air-quality",
-    detailHref: "/services#indoor-air-quality",
-    contactHref: "/contact?service=indoor-air-quality",
+    title: "Indoor Air Quality Assessment",
+    slug: "indoor-air-quality-assessment",
+    detailHref: "/services#indoor-air-quality-assessment",
+    contactHref: "/contact?service=indoor-air-quality-assessment",
     ctaLabel: "Request air-quality help",
-    heroLabel: "Indoor air and airflow improvements",
+    heroLabel: "Indoor air and airflow assessment",
     heroSummary:
-      "Air-quality work can include filtration, duct inspection, equipment cleaning, ventilation checks, and comfort recommendations.",
+      "Ventilation, filtration, and airflow review for residential comfort and system efficiency.",
     heroImage: {
       src: "/projects/project-15.png",
       alt: "HVAC duct and air-handler components inside a narrow utility closet",
     },
     summary:
-      "Filtration, ventilation, humidification, and air-quality upgrades that support cleaner indoor air.",
+      "Ventilation and airflow reviews for cleaner, more efficient residential comfort.",
     detail:
-      "Indoor air solutions can include filter upgrades, duct inspection, equipment cleaning, and recommendations for comfort issues tied to airflow or humidity.",
+      "Technicians review existing ventilation conditions, duct performance, filtration, and airflow issues before recommending improvements to system efficiency and comfort.",
     icon: "Wind",
   },
 ];
 
 export const reviews = [
   {
-    name: "Sarah M.",
-    location: "Residential customer",
+    name: "Collin Soto",
+    location: "Newark furnace installation",
     quote:
-      "They came out quickly, explained the issue clearly, and left the equipment area cleaner than they found it.",
+      "Peyton, Bryce, and Edwin made the furnace installation smooth after our heater failed. They explained the new system clearly and the house was so comfortable I had to lower the thermostat.",
   },
   {
-    name: "David R.",
-    location: "Homeowner",
+    name: "Santiago Cantu",
+    location: "Same-day heating system replacement",
     quote:
-      "The technician walked me through the repair and gave honest advice about what could wait and what needed attention.",
+      "Bryce and Edwin removed the old furnace and all of the existing ductwork, installed a brand new heating system, and had even warmth restored to every room by that same evening.",
   },
   {
-    name: "Jessica L.",
-    location: "Installation customer",
+    name: "Ruth11 H",
+    location: "Heat pump and tight attic ductwork",
     quote:
-      "Our replacement was organized, neat, and finished without surprises. The new system looks and runs great.",
+      "Bryce and Peyton solved a cramped attic access problem while installing a new heat pump and redoing all of the ductwork, completing work other contractors had turned down.",
+  },
+  {
+    name: "Brittney24 G",
+    location: "Newark furnace repair",
+    quote:
+      "From the first phone call about furnace repair pricing, the office and technician Preston were thoughtful, listened carefully, and stayed focused on doing a good job.",
+  },
+  {
+    name: "Preston Willis",
+    location: "Holiday AC repair",
+    quote:
+      "After using Garcia Brothers for AC repair several times, we still felt confident calling on a holiday when the air conditioner stopped working and Trenton came right away.",
+  },
+  {
+    name: "patrick pearson",
+    location: "Furnace tune-up",
+    quote:
+      "Bryson was friendly during the furnace tune-up and patiently answered questions for a new homeowner who did not know much about HVAC systems.",
+  },
+];
+
+export const faqs = [
+  {
+    question:
+      "Can Garcia Brothers handle a heat pump installation in a home with very limited attic space?",
+    answer:
+      "Yes. Ruth11 H's review describes Bryce and Peyton installing a new heat pump and rerouting all ductwork in a cramped attic, completing a job other contractors had declined.",
+  },
+  {
+    question: "What happens if my heater fails on a holiday evening in Newark?",
+    answer:
+      "Garcia Brothers lists 24-hour availability every day of the week, including weekends and holidays, so homeowners can call after hours for urgent heating or cooling help.",
+  },
+  {
+    question: "How long does a full furnace and ductwork replacement take?",
+    answer:
+      "Santiago Cantu's review describes Bryce and Edwin removing the old furnace and ductwork and getting a brand new heating system running by that same evening.",
+  },
+  {
+    question: "Are Bryant or other national brands part of the equipment options?",
+    answer:
+      "Customer review material mentions recognizable national equipment brands, including Bryant and Lennox, as part of completed HVAC projects.",
+  },
+  {
+    question: "Should I lower my thermostat after a new furnace is installed?",
+    answer:
+      "Collin Soto's review says the new furnace performed strongly enough that the thermostat setting had to be lowered to keep the home comfortable.",
+  },
+  {
+    question:
+      "What should I do if my old furnace and basement air handler are taking up too much space?",
+    answer:
+      "Garcia Brothers can evaluate replacement options such as a compact heat pump, including removal of oversized older equipment when the layout calls for it.",
+  },
+  {
+    question: "Will the technician explain how the new system works before leaving?",
+    answer:
+      "Yes. Multiple reviews describe technicians walking homeowners through the new equipment, answering questions, and explaining the work before leaving the property.",
   },
 ];
 

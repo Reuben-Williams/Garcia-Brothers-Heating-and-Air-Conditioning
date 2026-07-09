@@ -1,6 +1,6 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Clock, MapPin, Phone } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { business, services } from "@/content/siteData.mjs";
+import { business, hours, services } from "@/content/siteData.mjs";
 
 export const metadata = {
   title: "Contact",
@@ -10,8 +10,8 @@ export default function ContactPage() {
   return (
     <>
       <PageHero title="Contact Garcia Brothers">
-        Fast access to phone, email, and a service request form for heating,
-        cooling, and emergency HVAC calls.
+        Fast access to phone, address, 24-hour availability, and a service
+        request form for heating, cooling, and emergency HVAC calls.
       </PageHero>
       <section className="section">
         <div className="container contact-card">
@@ -70,9 +70,22 @@ export default function ContactPage() {
             </div>
             <div className="info-card">
               <h3>
-                <Mail size={20} /> Email
+                <MapPin size={20} /> Address
               </h3>
-              <p>{business.email}</p>
+              <p>{business.address}</p>
+            </div>
+            <div className="info-card">
+              <h3>
+                <Clock size={20} /> Hours
+              </h3>
+              <div className="hours-list">
+                {hours.map((entry) => (
+                  <p key={entry.day}>
+                    <strong>{entry.day}</strong>
+                    <span>{entry.value}</span>
+                  </p>
+                ))}
+              </div>
             </div>
             <div className="info-card">
               <h3>

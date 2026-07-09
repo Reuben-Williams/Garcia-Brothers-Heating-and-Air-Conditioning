@@ -1,6 +1,6 @@
-import Link from "next/link";
 import ServiceHeroCarousel from "@/components/ServiceHeroCarousel";
 import ServiceGrid from "@/components/ServiceGrid";
+import { business } from "@/content/siteData.mjs";
 
 export const metadata = {
   title: "Services",
@@ -20,8 +20,8 @@ export default function ServicesPage() {
             <div>
               <h2>All HVAC services</h2>
               <p className="section-lead">
-                Browse each service area, then request the exact support the
-                system needs.
+                Browse furnace replacement, heat pumps, ductwork, AC repair,
+                emergency HVAC, and indoor air-quality support.
               </p>
             </div>
           </div>
@@ -33,12 +33,13 @@ export default function ServicesPage() {
           <div>
             <h2>Need urgent heating or cooling help?</h2>
             <p className="section-lead">
-              Route emergency visitors directly to a phone call from every page.
+              {business.name} lists 24-hour availability every day, including
+              weekends and holidays.
             </p>
           </div>
-          <Link className="button primary" href="/contact">
-            Request Service
-          </Link>
+          <a className="button primary" href={business.phoneHref}>
+            Call {business.phoneDisplay}
+          </a>
         </div>
       </section>
     </>
