@@ -26,7 +26,7 @@ export default function ServiceGrid({ detailed = false }) {
         const Icon = iconMap[service.icon] || Wrench;
         return (
           <article
-            id={service.slug}
+            id={`${service.slug}-details`}
             className={`service-card${service.featured ? " featured" : ""}`}
             key={service.title}
           >

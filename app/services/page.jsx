@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
+import ServiceHeroCarousel from "@/components/ServiceHeroCarousel";
 import ServiceGrid from "@/components/ServiceGrid";
 
 export const metadata = {
@@ -9,12 +9,22 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageHero title="HVAC Services">
-        Repair, installation, maintenance, emergency support, commercial service,
-        and indoor-air improvements presented in a clean static demo format.
-      </PageHero>
+      <section className="page-hero services-hero">
+        <div className="container">
+          <ServiceHeroCarousel />
+        </div>
+      </section>
       <section className="section">
         <div className="container">
+          <div className="section-heading">
+            <div>
+              <h2>All HVAC services</h2>
+              <p className="section-lead">
+                Browse each service area, then request the exact support the
+                system needs.
+              </p>
+            </div>
+          </div>
           <ServiceGrid detailed />
         </div>
       </section>

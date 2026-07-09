@@ -23,6 +23,13 @@ export const services = [
     detailHref: "/services#ac-repair-install",
     contactHref: "/contact?service=ac-repair-install",
     ctaLabel: "Request cooling service",
+    heroLabel: "Cooling diagnostics and installs",
+    heroSummary:
+      "No-cool calls, condenser replacements, line routing, and practical cooling recommendations backed by real job-site photos.",
+    heroImage: {
+      src: "/projects/project-01.png",
+      alt: "Residential outdoor condenser installed on a clean exterior pad",
+    },
     summary:
       "Troubleshooting, seasonal repair, and clean installation of efficient cooling systems.",
     detail:
@@ -35,6 +42,13 @@ export const services = [
     detailHref: "/services#heating-services",
     contactHref: "/contact?service=heating-services",
     ctaLabel: "Request heating service",
+    heroLabel: "Heating repair and replacement",
+    heroSummary:
+      "Furnace and heat-pump service focused on safe operation, dependable heat, clean connections, and clear repair decisions.",
+    heroImage: {
+      src: "/projects/project-19.png",
+      alt: "Indoor furnace cabinet installed with clean connections and access",
+    },
     summary:
       "Furnace repair, heat pump service, and heating equipment replacement for reliable winter comfort.",
     detail:
@@ -47,6 +61,13 @@ export const services = [
     detailHref: "/services#maintenance-plans",
     contactHref: "/contact?service=maintenance-plans",
     ctaLabel: "Request maintenance",
+    heroLabel: "Preventive service visits",
+    heroSummary:
+      "Seasonal maintenance checks airflow, coils, drains, controls, and blower condition before small issues become urgent calls.",
+    heroImage: {
+      src: "/projects/project-07.png",
+      alt: "Close view of a blower wheel and fan housing during maintenance",
+    },
     summary:
       "Preventive tune-ups that reduce surprise breakdowns and keep HVAC equipment running efficiently.",
     detail:
@@ -59,6 +80,13 @@ export const services = [
     detailHref: "/services#emergency-hvac",
     contactHref: "/contact?service=emergency-hvac",
     ctaLabel: "Request emergency help",
+    heroLabel: "Urgent HVAC response",
+    heroSummary:
+      "Emergency support prioritizes comfort failures with direct communication, field diagnostics, and practical next-step recommendations.",
+    heroImage: {
+      src: "/projects/project-02.png",
+      alt: "Technician working around attic HVAC equipment and insulated line runs",
+    },
     summary:
       "Rapid response for urgent heating or cooling failures when indoor comfort cannot wait.",
     detail:
@@ -72,6 +100,13 @@ export const services = [
     detailHref: "/services#commercial-service",
     contactHref: "/contact?service=commercial-service",
     ctaLabel: "Request commercial service",
+    heroLabel: "Light commercial HVAC support",
+    heroSummary:
+      "Commercial service handles rooftop equipment, occupied spaces, uptime constraints, and documentation for repeatable building comfort.",
+    heroImage: {
+      src: "/projects/project-18.png",
+      alt: "Commercial rooftop HVAC unit with panels and service access points visible",
+    },
     summary:
       "Light commercial system repair, rooftop equipment support, and building climate troubleshooting.",
     detail:
@@ -84,6 +119,13 @@ export const services = [
     detailHref: "/services#indoor-air-quality",
     contactHref: "/contact?service=indoor-air-quality",
     ctaLabel: "Request air-quality help",
+    heroLabel: "Indoor air and airflow improvements",
+    heroSummary:
+      "Air-quality work can include filtration, duct inspection, equipment cleaning, ventilation checks, and comfort recommendations.",
+    heroImage: {
+      src: "/projects/project-15.png",
+      alt: "HVAC duct and air-handler components inside a narrow utility closet",
+    },
     summary:
       "Filtration, ventilation, humidification, and air-quality upgrades that support cleaner indoor air.",
     detail:
