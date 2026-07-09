@@ -6,7 +6,7 @@ export const business = {
   address: "42 S 17th St, Newark, NJ 07107",
   serviceArea: "Residential HVAC service across Newark, East Orange, Belleville, and nearby Essex County communities",
   rating: "4.8",
-  reviewCount: 53,
+  reviewCount: 49,
   reviewUrl:
     "https://search.google.com/local/reviews?placeid=ChIJgbdlnxpTwokRK3T6ITHjqbQ",
   hoursSummary: "Open 24 hours every day",

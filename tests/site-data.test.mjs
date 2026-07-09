@@ -49,7 +49,7 @@ test("business profile uses verified Newark contact and reputation details", () 
   assert.match(business.serviceArea, /East Orange/);
   assert.match(business.serviceArea, /Belleville/);
   assert.equal(business.rating, "4.8");
-  assert.equal(business.reviewCount, 53);
+  assert.equal(business.reviewCount, 49);
   assert.match(business.reviewUrl, /^https:\/\/search\.google\.com\/local\/reviews/);
 });
 
