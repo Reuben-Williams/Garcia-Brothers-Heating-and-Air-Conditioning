@@ -1,23 +1,57 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BlurredPhoto from "@/components/BlurredPhoto";
+
+function getProjectIndexFromHash(projects) {
+  if (typeof window === "undefined") {
+    return 0;
+  }
+
+  const projectId = window.location.hash.replace("#", "");
+  const index = projects.findIndex((item) => item.id === projectId);
+  return index >= 0 ? index : 0;
+}
 
 export default function ProjectCarousel({ projects }) {
   const [index, setIndex] = useState(0);
   const project = projects[index];
 
+  useEffect(() => {
+    function syncFromHash() {
+      setIndex(getProjectIndexFromHash(projects));
+    }
+
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, [projects]);
+
+  function updateProject(nextIndex) {
+    const normalizedIndex = (nextIndex + projects.length) % projects.length;
+    const nextProject = projects[normalizedIndex];
+
+    setIndex(normalizedIndex);
+    window.history.replaceState(null, "", `#${nextProject.id}`);
+  }
+
   function showPrevious() {
-    setIndex((current) => (current === 0 ? projects.length - 1 : current - 1));
+    updateProject(index - 1);
   }
 
   function showNext() {
-    setIndex((current) => (current + 1) % projects.length);
+    updateProject(index + 1);
   }
 
   return (
-    <section className="carousel" aria-label="Featured project carousel">
+    <section className="carousel" aria-label="Project photo spotlight">
+      <div className="project-anchor-stack" aria-hidden="true">
+        {projects.map((item) => (
+          <span id={item.id} key={item.id} />
+        ))}
+      </div>
+
       <div className="carousel-image">
         <BlurredPhoto
           src={project.src}

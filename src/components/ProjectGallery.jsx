@@ -1,6 +1,11 @@
-import Link from "next/link";
 import BlurredPhoto from "@/components/BlurredPhoto";
 import { projectImages } from "@/content/siteData.mjs";
+
+const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH || "";
+
+function projectHref(projectId) {
+  return `${siteBasePath}/projects/#${projectId}`;
+}
 
 export default function ProjectGallery({ limit }) {
   const images = limit ? projectImages.slice(0, limit) : projectImages;
@@ -8,11 +13,10 @@ export default function ProjectGallery({ limit }) {
   return (
     <div className={limit ? "project-strip" : "gallery-grid"}>
       {images.map((project) => (
-        <Link
+        <a
           aria-label={`View project details for ${project.title}`}
           className="project-card project-card-link"
-          href={`/projects#${project.id}`}
-          id={project.id}
+          href={projectHref(project.id)}
           key={project.id}
         >
           <div className="project-thumb">
@@ -30,7 +34,7 @@ export default function ProjectGallery({ limit }) {
             <h3>{project.title}</h3>
             <p>{project.summary}</p>
           </div>
-        </Link>
+        </a>
       ))}
     </div>
   );

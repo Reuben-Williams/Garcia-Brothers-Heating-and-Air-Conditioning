@@ -548,6 +548,20 @@ img {
   align-items: center;
 }
 
+.project-anchor-stack {
+  position: absolute;
+  top: -110px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.project-anchor-stack span {
+  display: block;
+  scroll-margin-top: 110px;
+}
+
 .services-hero {
   padding: 48px 0;
 }
@@ -655,6 +669,7 @@ img {
 }
 
 .carousel {
+  position: relative;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;

@@ -1,6 +1,6 @@
 import ProjectCarousel from "@/components/ProjectCarousel";
 import ProjectGallery from "@/components/ProjectGallery";
-import { featuredProjects } from "@/content/siteData.mjs";
+import { projectImages } from "@/content/siteData.mjs";
 
 export const metadata = {
   title: "Projects",
@@ -15,11 +15,11 @@ export default function ProjectsPage() {
             <h1>Project Gallery</h1>
             <p>
               Real Garcia Brothers job photos from the project folder, organized
-              as a featured carousel and a full gallery of installation,
+              as a project spotlight and a full gallery of installation,
               service, and maintenance work.
             </p>
           </div>
-          <ProjectCarousel projects={featuredProjects} />
+          <ProjectCarousel projects={projectImages} />
         </div>
       </section>
       <section className="section">
