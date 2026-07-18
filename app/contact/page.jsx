@@ -1,5 +1,6 @@
 import { Clock, MapPin, Phone } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import ServiceRequestForm from "@/components/ServiceRequestForm";
 import { business, hours, services } from "@/content/siteData.mjs";
 
 export const metadata = {
@@ -9,57 +10,15 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHero title="Contact Garcia Brothers">
+      <PageHero title="Contact Garcia Brothers" titleRegion="contact.hero.title" bodyRegion="contact.hero.body">
         Fast access to phone, address, 24-hour availability, and a service
         request form for heating, cooling, and emergency HVAC calls.
       </PageHero>
       <section className="section">
         <div className="container contact-card">
-          <form className="form-grid">
-            <div className="field">
-              <label htmlFor="firstName">First Name</label>
-              <input id="firstName" name="firstName" placeholder="First name" />
-            </div>
-            <div className="field">
-              <label htmlFor="lastName">Last Name</label>
-              <input id="lastName" name="lastName" placeholder="Last name" />
-            </div>
-            <div className="field">
-              <label htmlFor="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="Email" />
-            </div>
-            <div className="field">
-              <label htmlFor="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" placeholder="Phone" />
-            </div>
-            <div className="field full">
-              <label htmlFor="service">Service Needed</label>
-              <select id="service" name="service" defaultValue="">
-                <option value="" disabled>
-                  Select a service
-                </option>
-                {services.map((service) => (
-                  <option key={service.slug} value={service.slug}>
-                    {service.title}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="field full">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Tell us what is happening with the system."
-              />
-            </div>
-            <button className="button secondary" type="submit">
-              Request Service
-            </button>
-          </form>
+          <ServiceRequestForm services={services} />
 
-          <aside className="contact-grid">
+          <aside className="contact-grid" data-builder-region="contact.details" data-builder-kind="sections">
             <div className="info-card">
               <h3>
                 <Phone size={20} /> Phone

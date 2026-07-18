@@ -3,7 +3,8 @@ const repoName = "Garcia-Brothers-Heating-and-Air-Conditioning";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  ...(isGithubPages ? { output: "export" } : {}),
+  outputFileTracingRoot: process.cwd(),
   trailingSlash: true,
   basePath: isGithubPages ? `/${repoName}` : "",
   assetPrefix: isGithubPages ? `/${repoName}/` : "",
@@ -12,6 +13,26 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+  },
+  transpilePackages: [
+    "@your-builder/content",
+    "@your-builder/core",
+    "@your-builder/editor",
+    "@your-builder/entitlements",
+    "@your-builder/feature-registry",
+    "@your-builder/growth-core",
+    "@your-builder/growth-customers",
+    "@your-builder/growth-dashboard",
+    "@your-builder/growth-leads",
+    "@your-builder/next",
+  ],
+  webpack(config) {
+    config.resolve.extensionAlias = {
+      ...(config.resolve.extensionAlias || {}),
+      ".js": [".js", ".ts", ".tsx"],
+      ".mjs": [".mjs", ".mts"],
+    };
+    return config;
   },
 };
 

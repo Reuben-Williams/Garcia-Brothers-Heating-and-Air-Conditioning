@@ -1,7 +1,7 @@
+import { Suspense } from "react";
 import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import SiteChrome from "@/components/SiteChrome";
 import { business } from "@/content/siteData.mjs";
 
 const heading = Manrope({
@@ -29,11 +29,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${heading.variable} ${body.variable}`}>
       <body>
-        <div className="site-shell">
-          <Header />
-          <main className="main-content">{children}</main>
-          <Footer />
-        </div>
+        <Suspense fallback={<main className="main-content">{children}</main>}>
+          <SiteChrome>{children}</SiteChrome>
+        </Suspense>
       </body>
     </html>
   );

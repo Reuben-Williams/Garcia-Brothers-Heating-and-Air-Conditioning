@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "platformCommit": "7865f17",
+  "packages": [
+    { "file": "your-builder-content-0.1.0.tgz", "sha256": "f18b8630ad0c7c8a6a5540c4a30d6e85198da31a1cf99e25f0a1e91df187368c" },
+    { "file": "your-builder-core-0.1.0.tgz", "sha256": "84f74368b14cce316b6d9bfcd0f3d9a3d11d5cf7e2a07995a31d98d6c319c26e" },
+    { "file": "your-builder-editor-0.1.0.tgz", "sha256": "c09bbc93017273ac99b9d019fe14f991e18c58ae27b2b143f845f26155393b73" },
+    { "file": "your-builder-entitlements-0.1.0.tgz", "sha256": "a27bec4267687e7746d0d8270c3c687b3b6e3768053e8334c000c06a77d4ca99" },
+    { "file": "your-builder-feature-registry-0.1.0.tgz", "sha256": "c7f9253a0218037998d50cd10061068a397779ffea51f104e441b8dff9b82c74" },
+    { "file": "your-builder-growth-core-0.1.0.tgz", "sha256": "a224f96329b69c25e3b7c6d3ac4d6fbe42fde26f1518d263ecf6fe469befc63c" },
+    { "file": "your-builder-growth-customers-0.1.0.tgz", "sha256": "2d6d4a06a6e07e15a183967d0714e6a1a4f4636ac510c4dd68978050f97cb09c" },
+    { "file": "your-builder-growth-dashboard-0.1.0.tgz", "sha256": "64f84eeb74ec0346797cd7838d9ffeaeb1168276415c8e363c0ce4f4ea688507" },
+    { "file": "your-builder-growth-leads-0.1.0.tgz", "sha256": "5fc5ea15e2360dea4fbbf7cca19c4b95b1c1e992019e08603e58aa8a38cfb214" },
+    { "file": "your-builder-next-0.1.0.tgz", "sha256": "98b89325a33f3fba79d187c28c4ad9f675a1c28dec9efa52718022c82dadbcb8" }
+  ]
+}

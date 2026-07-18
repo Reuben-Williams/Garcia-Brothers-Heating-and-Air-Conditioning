@@ -10,27 +10,27 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageHero title="About Garcia Brothers">
+      <PageHero title="About Garcia Brothers" titleRegion="about.hero.title" bodyRegion="about.hero.body">
         Family-owned HVAC service for Newark, East Orange, Belleville, and
         nearby Essex County homeowners, with 24-hour availability every day.
       </PageHero>
       <section className="section">
         <div className="container split">
           <div>
-            <h2>Local heating and cooling work backed by real customer detail.</h2>
-            <p className="section-lead">
+            <h2 data-builder-region="about.story.title" data-builder-kind="text">Local heating and cooling work backed by real customer detail.</h2>
+            <p className="section-lead" data-builder-region="about.story.lead" data-builder-kind="richText">
               Garcia Brothers Heating & Air Conditioning responds to routine
               maintenance calls, urgent furnace failures, heat pump installs,
               ductwork redesigns, and complete system replacements across
               Newark-area homes.
             </p>
-            <p>
+            <p data-builder-region="about.story.body" data-builder-kind="richText">
               Reviews highlight technicians who explain the work before leaving
               the property and stay comfortable with nonstandard layouts. Named
               projects include a same-day furnace and ductwork replacement and a
               heat pump installation in a home with very limited attic access.
             </p>
-            <div className="check-list">
+            <div className="check-list" data-builder-region="about.proof.items" data-builder-kind="sections">
               <div className="check-item">
                 <BadgeCheck size={22} />
                 <div>
@@ -67,14 +67,14 @@ export default function AboutPage() {
         <div className="container">
           <div className="section-heading">
             <div>
-              <h2>Frequently asked questions</h2>
-              <p className="section-lead">
+              <h2 data-builder-region="about.faq.title" data-builder-kind="text">Frequently asked questions</h2>
+              <p className="section-lead" data-builder-region="about.faq.body" data-builder-kind="richText">
                 Practical answers based on the business profile, hours, and
                 named customer review examples.
               </p>
             </div>
           </div>
-          <div className="faq-grid">
+          <div className="faq-grid" data-builder-region="collections.faqs" data-builder-kind="sections">
             {faqs.map((faq) => (
               <article className="info-card" key={faq.question}>
                 <h3>{faq.question}</h3>

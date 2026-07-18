@@ -1,0 +1,17 @@
+.page { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #eef2f1; color: #181c1c; }
+.panel { width: min(100%, 430px); padding: 32px; border: 1px solid #c4c6ce; border-radius: 8px; background: #fff; box-shadow: 0 18px 45px rgba(10,37,64,.12); }
+.brandMark { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 8px; background: #0a2540; color: #fff; font-weight: 900; }
+.eyebrow { margin: 24px 0 6px; color: #a65f20; font-size: .78rem; font-weight: 900; text-transform: uppercase; }
+.panel h1 { margin: 0; color: #0a2540; font-size: 2rem; }
+.intro { margin: 10px 0 24px; color: #43474d; line-height: 1.6; }
+.form { display: grid; gap: 18px; }
+.form label { display: grid; gap: 8px; color: #0a2540; font-size: .88rem; font-weight: 800; }
+.inputWrap { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 13px; border: 1px solid #aeb4b9; border-radius: 8px; background: #f7faf9; }
+.inputWrap:focus-within { border-color: #0a2540; outline: 2px solid rgba(10,37,64,.16); }
+.inputWrap input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; }
+.form button { min-height: 48px; border: 0; border-radius: 8px; background: #0a2540; color: #fff; font-weight: 900; cursor: pointer; }
+.form button:disabled { cursor: wait; opacity: .65; }
+.error, .notice { margin: 0; padding: 12px; border-radius: 6px; background: #fff1f0; color: #8a1f17; line-height: 1.5; }
+.notice { background: #fff7e8; color: #70420e; }
+.backLink { display: inline-block; margin-top: 24px; color: #0a2540; font-weight: 800; }
+@media (max-width: 520px) { .page { padding: 0; align-items: stretch; } .panel { width: 100%; min-height: 100vh; padding: 24px; border: 0; box-shadow: none; } }

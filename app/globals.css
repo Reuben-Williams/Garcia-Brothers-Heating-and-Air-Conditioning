@@ -806,6 +806,41 @@ img {
   grid-column: 1 / -1;
 }
 
+.consent-field {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.consent-field input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+}
+
+.turnstile-field {
+  min-height: 66px;
+}
+
+.form-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.form-status.sent { background: #e8f6ec; color: #185b2f; }
+.form-status.error { background: #fff1f0; color: #8a1f17; }
+
 .field label {
   color: var(--trust-navy);
   font-size: 0.88rem;

@@ -9,7 +9,7 @@ export const metadata = {
 export default function ReviewsPage() {
   return (
     <>
-      <PageHero title="Reviews">
+      <PageHero title="Reviews" titleRegion="reviews.hero.title" bodyRegion="reviews.hero.body">
         Garcia Brothers holds a {business.rating}-star rating across{" "}
         {business.reviewCount} customer reviews, with named feedback calling out
         communication, speed, and technical problem solving.
@@ -18,19 +18,19 @@ export default function ReviewsPage() {
         <div className="container">
           <div className="rating-panel">
             <div>
-              <span className="eyebrow">Google review summary</span>
+              <span className="eyebrow" data-builder-region="reviews.summary.eyebrow" data-builder-kind="text">Google review summary</span>
               <h2>{business.rating} stars from {business.reviewCount} reviews</h2>
-              <p className="section-lead">
+              <p className="section-lead" data-builder-region="reviews.summary.body" data-builder-kind="richText">
                 The examples below highlight furnace replacement, heat pump
                 installation, ductwork redesign, holiday AC repair, and tune-up
                 experiences from the source review material.
               </p>
             </div>
-            <a className="button secondary" href={business.reviewUrl}>
+            <a className="button secondary" href={business.reviewUrl} data-builder-region="reviews.summary.cta" data-builder-kind="link">
               Read reviews on Google
             </a>
           </div>
-          <Reviews />
+          <div data-builder-region="reviews.list.items" data-builder-kind="sections"><Reviews /></div>
         </div>
       </section>
     </>

@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "moduleId": "growth.dashboard",
+  "moduleVersion": "2.0.0",
+  "requirements": {
+    "packages": {
+      "@your-builder/editor": "0.1.0",
+      "@your-builder/entitlements": "0.1.0",
+      "@your-builder/feature-registry": "0.1.0",
+      "@your-builder/growth-customers": "0.1.0",
+      "@your-builder/growth-dashboard": "0.1.0",
+      "@your-builder/growth-leads": "0.1.0",
+      "@your-builder/next": "0.1.0"
+    },
+    "schemas": { "builder": 1, "growth": 1 },
+    "routes": ["/admin/editor"],
+    "minimumWorkerVersion": "1.0.0"
+  }
+}

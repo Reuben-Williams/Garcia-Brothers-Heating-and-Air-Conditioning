@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "packages": {
+    "@your-builder/content": "0.1.0",
+    "@your-builder/core": "0.1.0",
+    "@your-builder/editor": "0.1.0",
+    "@your-builder/entitlements": "0.1.0",
+    "@your-builder/feature-registry": "0.1.0",
+    "@your-builder/growth-core": "0.1.0",
+    "@your-builder/growth-customers": "0.1.0",
+    "@your-builder/growth-dashboard": "0.1.0",
+    "@your-builder/growth-leads": "0.1.0",
+    "@your-builder/next": "0.1.0"
+  },
+  "schemas": { "builder": 1, "growth": 1 },
+  "routes": [
+    "/", "/about", "/services", "/projects", "/reviews", "/contact",
+    "/admin/editor", "/api/builder", "/api/forms/service-request"
+  ],
+  "workerVersion": "1.0.0"
+}
