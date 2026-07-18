@@ -1,5 +1,34 @@
 name: Deploy private staging
 
+# Netlify builds are triggered through the encrypted build hook for private staging.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: netlify-private-staging
+  cancel-in-progress: true
+
+jobs:
+  trigger-netlify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify production build
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          test -n "$NETLIFY_BUILD_HOOK"
+          curl --fail --silent --show-error \
+            --request POST \
+            --data '{}' \
+            "$NETLIFY_BUILD_HOOK"
+name: Deploy private staging
+
 on:
   push:
     branches:
