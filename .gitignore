@@ -11,7 +11,10 @@ pnpm-debug.log*
 .env
 .env.*
 !.env.example
-.builder/cache/
+.builder/cache/*
+!.builder/cache/packages/
+.builder/cache/packages/*
+!.builder/cache/packages/*.tgz
 .builder/onboarding/
 .builder/secrets/
 artifacts/onboarding/*.private.json
