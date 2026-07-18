@@ -16,6 +16,8 @@ const body = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const isPrivateStaging = process.env.NEXT_PUBLIC_SITE_ENVIRONMENT === "staging";
+
 export const metadata = {
   title: {
     default: `${business.name} | Newark HVAC Service`,
@@ -23,6 +25,16 @@ export const metadata = {
   },
   description:
     "Garcia Brothers Heating & Air Conditioning provides 24-hour residential HVAC service, furnace repair, heat pump installation, ductwork, AC repair, and indoor air-quality support in Newark, NJ.",
+  robots: {
+    index: !isPrivateStaging,
+    follow: !isPrivateStaging,
+    nocache: isPrivateStaging,
+    googleBot: {
+      index: !isPrivateStaging,
+      follow: !isPrivateStaging,
+      noimageindex: isPrivateStaging,
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
