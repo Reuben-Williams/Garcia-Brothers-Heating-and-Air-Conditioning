@@ -1,4 +1,5 @@
 .next/
+.netlify/
 .next-stale-*/
 out/
 node_modules/
