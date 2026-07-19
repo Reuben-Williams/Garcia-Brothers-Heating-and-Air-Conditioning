@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "receiptDigest": "0ccb8d870cc7e3a55a9c8d00eb3897863b0da8db4a060e82a3b3160e5ef97612",
+  "target": {
+    "provider": "manual",
+    "accountId": "manual",
+    "siteId": "dd686e2b8a8081f602b3b9ba61b3bde87849447551ea867fe4c62e924559abba",
+    "siteName": "Garcia Brothers Heating & Air Conditioning",
+    "context": "staging",
+    "branch": null,
+    "scopes": [
+      "server-runtime"
+    ]
+  },
+  "names": [
+    "BUILDER_CONTROL_PLANE_URL",
+    "BUILDER_INSTALLATION_ID",
+    "BUILDER_INSTALLATION_KEY_ID",
+    "BUILDER_INSTALLATION_PRIVATE_JWK"
+  ],
+  "acknowledgedAt": "2026-07-19T10:12:37.279Z"
+}

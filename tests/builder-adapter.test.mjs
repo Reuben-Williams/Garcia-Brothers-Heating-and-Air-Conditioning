@@ -58,6 +58,24 @@ test("portable package manifest is commit-pinned and contains no machine path", 
   assert.doesNotMatch(packageJson, /D:\\|Project Morales|site-editor-platform/);
 });
 
+test("checksum manifest and npm lock both match every packaged artifact", async () => {
+  const manifest = JSON.parse(await read("builder-packages.lock.json"));
+  const packageLock = JSON.parse(await read("package-lock.json"));
+  const lockedByFile = new Map(Object.values(packageLock.packages)
+    .filter((entry) => entry?.resolved?.startsWith("file:.builder/cache/packages/"))
+    .map((entry) => [entry.resolved.split("/").at(-1), entry]));
+
+  for (const entry of manifest.packages) {
+    const contents = await readFile(new URL(`../.builder/cache/packages/${entry.file}`, import.meta.url));
+    assert.equal(createHash("sha256").update(contents).digest("hex"), entry.sha256);
+    assert.equal(
+      lockedByFile.get(entry.file)?.integrity,
+      `sha512-${createHash("sha512").update(contents).digest("base64")}`,
+      `npm integrity mismatch for ${entry.file}`,
+    );
+  }
+});
+
 test("package bootstrap accepts a complete verified offline cache", async () => {
   const root = await mkdtemp(join(tmpdir(), "garcia-builder-packages-"));
   try {

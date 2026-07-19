@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "controlPlaneUrl": "https://site-editor-control-plane-staging.netlify.app",
+  "stableSiteKey": "garcia-brothers-hvac",
+  "publicUrl": "https://garcia-brothers-private-staging.netlify.app",
+  "registeredAt": "2026-07-19T10:09:14.253Z",
+  "installationId": "1d40dfd9-4f56-4efc-a4fe-7d1965fcdcac",
+  "acceptedKeyId": "key-20260719-lvYln8kXhQE",
+  "publicSigningKeys": [],
+  "endpoints": {
+    "pullCommands": "/api/platform/v1/installations/commands/pull",
+    "submitCommandResult": "/api/platform/v1/installations/commands/{commandId}/result",
+    "reportHealth": "/api/platform/v1/installations/health",
+    "rotateCredential": "/api/platform/v1/installations/credentials/rotate"
+  }
+}
