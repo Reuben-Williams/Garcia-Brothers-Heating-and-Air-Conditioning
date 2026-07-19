@@ -36,5 +36,6 @@ export function requireBuilderServerConfig() {
   return {
     ...requirePublicSupabaseConfig(),
     serviceKey: required("SUPABASE_SERVICE_ROLE_KEY"),
+    siteId: required("BUILDER_SITE_UUID"),
   };
 }

@@ -36,6 +36,7 @@ export default function HomePage() {
 
           <BlurredPhoto
             className="hero-media"
+              regionId="home.hero.image"
               src="/projects/project-01.png"
               alt="Residential outdoor condenser installed on a clean exterior pad"
               sizes="(max-width: 980px) 100vw, 54vw"
@@ -76,6 +77,7 @@ export default function HomePage() {
         <div className="container split">
           <div className="media-frame">
             <BlurredPhoto
+              regionId="home.local-proof.image"
               src="/projects/project-02.png"
               alt="Technician working around attic HVAC equipment"
               sizes="(max-width: 980px) 100vw, 50vw"

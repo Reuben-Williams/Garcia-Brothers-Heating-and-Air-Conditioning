@@ -1,6 +1,6 @@
 "use client";
 
-import { BuilderPreviewBridge, BuilderProvider } from "@your-builder/next";
+import { BuilderDomContentBridge, BuilderPreviewBridge, BuilderProvider } from "@your-builder/next";
 import { usePathname, useSearchParams } from "next/navigation";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -13,6 +13,7 @@ export default function SiteChrome({ children }) {
 
   return (
     <BuilderProvider siteId="garcia-brothers-hvac" mode={preview ? "editor" : "public"}>
+      {!admin ? <BuilderDomContentBridge mode={preview ? "draft" : "published"} /> : null}
       <BuilderPreviewBridge siteId="garcia-brothers-hvac" />
       {admin ? children : (
         <div className="site-shell">

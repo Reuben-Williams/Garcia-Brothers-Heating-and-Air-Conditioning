@@ -19,12 +19,13 @@ export default function BlurredPhoto({
   priority = false,
   className = "",
   children,
+  regionId,
 }) {
   const versionedSrc = withCacheVersion(src);
   const fetchPriority = priority ? "high" : "auto";
 
   return (
-    <div className={`blurred-photo ${className}`}>
+    <div className={`blurred-photo ${className}`} data-builder-region={regionId} data-builder-kind={regionId ? "image" : undefined}>
       <img
         aria-hidden="true"
         alt=""

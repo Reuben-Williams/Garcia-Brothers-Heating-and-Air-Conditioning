@@ -16,6 +16,8 @@ import { growthLeadsModule } from "@your-builder/growth-leads";
 import { LeadsWorkspace, createLeadsDemoApi } from "@your-builder/growth-leads/ui";
 import { useEffect, useMemo, useState } from "react";
 import site from "../../../builder.config.mjs";
+import { projectImages } from "../../../src/content/siteData.mjs";
+import GarciaPostsWorkspace from "./GarciaPostsWorkspace";
 import styles from "./editor.module.css";
 
 const customerDemoApi = {};
@@ -30,25 +32,61 @@ function selectedRegionFromMessage(message) {
     id: message.regionId,
     kind: message.kind,
     label: message.regionId.split(".").join(" "),
-    value: "",
-    alt: "",
-    href: "",
+    value: message.value ?? "",
+    alt: message.alt ?? "",
+    href: message.href ?? "",
   };
 }
 
-export default function GarciaEditor({ member, previewBaseUrl }) {
-  const [workspace, setWorkspace] = useState("growth.dashboard");
-  const [currentPath, setCurrentPath] = useState("/");
-  const [selectedRegion, setSelectedRegion] = useState({
-    id: "home.hero.title",
-    kind: "text",
-    label: "Home hero title",
-    value: "Expert HVAC service for Newark homes",
+function selectionFromSaved(regionId, value) {
+  if (value.type === "image") return { id: regionId, kind: "image", label: regionId.split(".").join(" "), value: value.src, alt: value.alt ?? "" };
+  if (value.type === "link") return { id: regionId, kind: "link", label: regionId.split(".").join(" "), value: value.label, href: value.href };
+  if (value.type === "icon") return { id: regionId, kind: "icon", label: regionId.split(".").join(" "), value: value.icon };
+  return { id: regionId, kind: value.type, label: regionId.split(".").join(" "), value: value.value };
+}
+
+async function builderRequest(url, options) {
+  const response = await fetch(url, {
+    credentials: "same-origin",
+    cache: "no-store",
+    headers: { accept: "application/json", ...(options?.body ? { "content-type": "application/json" } : {}) },
+    ...options,
   });
+  if (!response.ok) throw new Error("builder_request_failed");
+  return response.status === 204 ? null : response.json();
+}
+
+export default function GarciaEditor({ member, previewBaseUrl, initialPath = "/" }) {
+  const [workspace, setWorkspace] = useState("website.pages");
+  const [currentPath, setCurrentPath] = useState(initialPath);
+  const [selectedRegion, setSelectedRegion] = useState();
+  const [auditLog, setAuditLog] = useState([]);
+  const [previewRevision, setPreviewRevision] = useState(0);
   const notificationsApi = useMemo(() => createNotificationsDemoApi(), []);
   const memberApi = useMemo(() => createMemberSetupDemoApi(), []);
   const leadsApi = useMemo(() => createLeadsDemoApi(), []);
+  const mediaAssets = useMemo(() => projectImages.map((project) => ({
+    id: project.id,
+    siteId: site.siteId,
+    path: project.src,
+    url: new URL(project.src.replace(/^\/+/, ""), `${previewBaseUrl.replace(/\/$/, "")}/`).toString(),
+    alt: project.alt,
+    label: project.title,
+    mimeType: "image/png",
+    source: "seed",
+    userId: "site-seed",
+    createdAt: "2026-07-19T00:00:00.000Z",
+  })), [previewBaseUrl]);
 
+  async function refreshAudit(path = currentPath) {
+    try {
+      setAuditLog(await builderRequest(`/api/builder?resource=audit&path=${encodeURIComponent(path)}`));
+    } catch {
+      setAuditLog([]);
+    }
+  }
+
+  useEffect(() => { void refreshAudit(currentPath); }, [currentPath]);
   useEffect(() => {
     const previewOrigin = new URL(previewBaseUrl).origin;
     function receivePreviewMessage(event) {
@@ -57,12 +95,44 @@ export default function GarciaEditor({ member, previewBaseUrl }) {
         setSelectedRegion(selectedRegionFromMessage(event.data));
       } else if (event.data.type === "builder:navigate") {
         const nextPath = event.data.pagePath.split(/[?#]/, 1)[0] || "/";
-        if (site.pages.some((page) => page.path === nextPath)) setCurrentPath(nextPath);
+        if (site.pages.some((page) => page.path === nextPath)) changePage(nextPath);
       }
     }
     window.addEventListener("message", receivePreviewMessage);
     return () => window.removeEventListener("message", receivePreviewMessage);
   }, [previewBaseUrl]);
+
+  function updateLocation(path, nextWorkspace) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("path", path);
+    url.searchParams.set("workspace", nextWorkspace);
+    window.history.pushState(null, "", url);
+  }
+
+  function changePage(path) {
+    setCurrentPath(path);
+    setWorkspace("website.pages");
+    setSelectedRegion(undefined);
+    updateLocation(path, "website.pages");
+  }
+
+  function changeWorkspace(nextWorkspace) {
+    setWorkspace(nextWorkspace);
+    updateLocation(currentPath, nextWorkspace);
+  }
+
+  async function saveDraft(input) {
+    await builderRequest("/api/builder", { method: "POST", body: JSON.stringify(input) });
+    setSelectedRegion(selectionFromSaved(input.regionId, input.value));
+    setPreviewRevision((revision) => revision + 1);
+    await refreshAudit(input.pagePath);
+  }
+
+  async function publish(input) {
+    await builderRequest("/api/builder", { method: "PUT", body: JSON.stringify(input) });
+    setPreviewRevision((revision) => revision + 1);
+    await refreshAudit(input.pagePath);
+  }
 
   const resetDemo = () => window.location.reload();
   const workspaces = [
@@ -70,8 +140,8 @@ export default function GarciaEditor({ member, previewBaseUrl }) {
       id: "growth.dashboard", label: "Overview", group: "growth", icon: "layout-dashboard", mobilePriority: 1, status: "preview",
       render: () => <div className={styles.workspaceStack}>
         <DashboardWorkspace mode="demo" actorRole={member.role} access={dashboardAccess} onNavigate={(destination) => {
-          if (destination === "leads") setWorkspace("growth.leads");
-          if (destination === "customers") setWorkspace("growth.customers");
+          if (destination === "leads") changeWorkspace("growth.leads");
+          if (destination === "customers") changeWorkspace("growth.customers");
         }} onResetDemo={resetDemo} />
         <NotificationsWorkspace mode="demo" api={notificationsApi} urlState={{ view: "all" }} onResetDemo={resetDemo} />
         {member.role === "owner" ? <MemberSetupWorkspace mode="demo" actorRole="owner" api={memberApi} onRequestAal2={() => undefined} onResetDemo={resetDemo} /> : null}
@@ -79,7 +149,7 @@ export default function GarciaEditor({ member, previewBaseUrl }) {
     },
     {
       id: "growth.leads", label: "Leads", group: "growth", icon: "contact-round", mobilePriority: 2, status: "preview",
-      render: () => <LeadsWorkspace mode="demo" api={leadsApi} access={{ memberId: member.userId, scope: "site", canRead: true, canCreate: true, canUpdate: true, canAssignOthers: member.role === "owner", canManageTasks: true, canExport: member.role === "owner" }} assignees={[{ id: member.userId, label: "Current staff member" }]} tags={[{ id: "maintenance", label: "Maintenance", color: "#175cd3" }]} services={["AC repair", "Heating repair", "Maintenance", "AC replacement"]} savedViews={[]} urlState={{}} onResetDemo={resetDemo} />,
+      render: () => <LeadsWorkspace mode="demo" api={leadsApi} access={{ memberId: member.userId, scope: "site", canRead: true, canCreate: true, canUpdate: true, canAssignOthers: member.role === "owner", canManageTasks: true, canExport: member.role === "owner" }} assignees={[{ id: member.userId, label: "Current staff member" }]} tags={[{ id: "maintenance", label: "Maintenance", color: "#175cd3" }]} services={["AC repair", "Heating repair", "Maintenance", "AC replacement"]} savedViews={[]} urlState={{ view: "all", sort: "updated_at", direction: "desc" }} onResetDemo={resetDemo} />,
     },
     {
       id: "growth.customers", label: "Customers", group: "growth", icon: "users", mobilePriority: 3, status: "preview",
@@ -97,6 +167,7 @@ export default function GarciaEditor({ member, previewBaseUrl }) {
         currentPath={currentPath}
         pages={site.pages}
         previewBaseUrl={previewBaseUrl}
+        previewRevision={previewRevision}
         initialWorkspace={workspace}
         registration={{
           modules: [growthCustomersModule, growthLeadsModule, GROWTH_DASHBOARD_MODULE],
@@ -104,10 +175,15 @@ export default function GarciaEditor({ member, previewBaseUrl }) {
           globalHeader: <span className={styles.memberLabel}>{member.role} access</span>,
         }}
         selectedRegion={selectedRegion}
-        demoMode
+        mediaAssets={mediaAssets}
+        postsWorkspace={<GarciaPostsWorkspace mediaAssets={mediaAssets} />}
+        onPageChange={changePage}
+        onWorkspaceChange={changeWorkspace}
+        onSaveDraft={saveDraft}
+        onPublish={publish}
         userViewUrl="/"
         logoutUrl="/admin/logout"
-        auditLog={[]}
+        auditLog={auditLog}
       />
     </div>
   );

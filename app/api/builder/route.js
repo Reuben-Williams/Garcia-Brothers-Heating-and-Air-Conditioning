@@ -16,8 +16,24 @@ async function dispatch(method, request) {
   return handlers[method](request);
 }
 
+async function dispatchPublished(request) {
+  const config = requireBuilderServerConfig();
+  const adapter = createSupabaseAdapter({ url: config.url, serviceKey: config.serviceKey });
+  const handlers = createBuilderRouteHandlers({
+    site: { ...site, siteId: config.siteId },
+    adapter,
+  });
+  return handlers.GET(request);
+}
+
 async function safely(method, request) {
   try {
+    const url = new URL(request.url);
+    const mode = url.searchParams.get("mode");
+    const resource = url.searchParams.get("resource") ?? "content";
+    if (method === "GET" && mode === "published" && resource === "content") {
+      return await dispatchPublished(request);
+    }
     return await dispatch(method, request);
   } catch (error) {
     const status = error?.status === 401 || error?.status === 403 ? error.status : 503;

@@ -56,6 +56,7 @@ export default function AboutPage() {
           </div>
           <div className="media-frame">
             <BlurredPhoto
+              regionId="about.story.image"
               src="/projects/project-23.png"
               alt="Basement HVAC ductwork and mechanical lines during service"
               sizes="(max-width: 980px) 100vw, 50vw"
