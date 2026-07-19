@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Clock, Flame, MapPin, Phone, Star, Wrench } from "lucide-react";
+import { Clock, Flame, LockKeyhole, MapPin, Phone, Star, Wrench } from "lucide-react";
 import { business, navItems, services } from "@/content/siteData.mjs";
 
 export default function Footer() {
@@ -87,6 +87,10 @@ export default function Footer() {
         <div className="footer-bottom">
           <span>(c) 2026 {business.name}. HVAC service in Newark, NJ.</span>
           <span>{business.serviceArea}</span>
+          <Link className="footer-owner-link" href="/admin/login">
+            <LockKeyhole size={14} />
+            Owner sign in
+          </Link>
         </div>
       </div>
     </footer>

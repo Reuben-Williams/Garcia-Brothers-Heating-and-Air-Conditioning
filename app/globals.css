@@ -972,6 +972,13 @@ img {
   font-size: 0.9rem;
 }
 
+.footer-owner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
 .contact-card .contact-grid {
   grid-template-columns: 1fr;
 }
