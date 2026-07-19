@@ -29,6 +29,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
+  "devDependencies": {
+    "@your-builder/cli": "file:.builder/cache/packages/your-builder-cli-0.1.0.tgz"
+  },
   "overrides": {
     "postcss": "^8.5.10"
   }

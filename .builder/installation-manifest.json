@@ -16,6 +16,5 @@
   "routes": [
     "/", "/about", "/services", "/projects", "/reviews", "/contact",
     "/admin/editor", "/api/builder", "/api/forms/service-request"
-  ],
-  "workerVersion": "1.0.0"
+  ]
 }

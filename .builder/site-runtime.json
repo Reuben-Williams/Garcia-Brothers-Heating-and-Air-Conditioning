@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "siteDataPlaneSiteId": "850df39c-82e1-4feb-bbbc-05f19a43897c",
+  "expectedSiteKey": "garcia-brothers-hvac",
+  "installationManifestSha256": "00fcd822629cc5e36cea870144f55b6dd1b05d256b51118997803ec896a9ac83",
+  "configLoaderContract": "installation-client-config-v1",
+  "durableStoreContract": "supabase-command-receipts-v1",
+  "leaseContract": "site-installation-run-lease-v1",
+  "leaseSeconds": 120,
+  "invocationTimeoutSeconds": 25,
+  "scheduledInvocationContract": "direct-in-process-v1",
+  "handlerRegistrySha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "reachabilityEvidenceRevision": "garcia-netlify-scheduled-v1"
+}

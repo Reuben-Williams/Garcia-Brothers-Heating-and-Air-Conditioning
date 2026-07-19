@@ -52,8 +52,8 @@ test("editor authentication is production-shaped and contains no acceptance shor
 test("portable package manifest is commit-pinned and contains no machine path", async () => {
   const manifest = JSON.parse(await read("builder-packages.lock.json"));
   const packageJson = await read("package.json");
-  assert.equal(manifest.platformCommit, "7865f17");
-  assert.equal(manifest.packages.length, 10);
+  assert.equal(manifest.platformCommit, "d88047b");
+  assert.equal(manifest.packages.length, 11);
   assert.ok(manifest.packages.every((entry) => /^[a-f0-9]{64}$/.test(entry.sha256)));
   assert.doesNotMatch(packageJson, /D:\\|Project Morales|site-editor-platform/);
 });
