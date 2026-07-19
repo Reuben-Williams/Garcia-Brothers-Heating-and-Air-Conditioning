@@ -22,7 +22,7 @@ test("pins the guided installation CLI to the accepted platform package", async 
   const lock = await readJson("builder-packages.lock.json");
   const cli = lock.packages.find((entry) => entry.file === "your-builder-cli-0.1.0.tgz");
 
-  assert.equal(lock.platformCommit, "8d95ea9");
+  assert.equal(lock.platformCommit, "c3c5fbf");
   assert.equal(
     packageJson.devDependencies["@your-builder/cli"],
     "file:.builder/cache/packages/your-builder-cli-0.1.0.tgz",
