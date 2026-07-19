@@ -9,12 +9,10 @@ test("Garcia editor wires page state and durable content actions into the shared
   const page = await read("app/admin/editor/page.jsx");
   const route = await read("app/api/builder/route.js");
 
-  for (const contract of ["onPageChange", "onWorkspaceChange", "onSaveDraft", "onPublish"]) {
+  for (const contract of ["onPageChange", "onWorkspaceChange", "onSaveDraft", "onPublish", "onRegionSelectionChange", "onLinkSelectedRegions"]) {
     assert.match(editor, new RegExp(contract));
   }
-  assert.match(editor, /message\.value/);
-  assert.match(editor, /message\.alt/);
-  assert.match(editor, /message\.href/);
+  assert.doesNotMatch(editor, /addEventListener\(["']message["']/);
   assert.match(page, /searchParams/);
   assert.match(page, /initialPath/);
   assert.match(route, /mode\s*===\s*["']published["']/);
@@ -26,10 +24,13 @@ test("Garcia editor supplies real project media and an interactive HVAC posts wo
 
   assert.match(editor, /mediaAssets=\{mediaAssets\}/);
   assert.match(editor, /postsWorkspace=\{<GarciaPostsWorkspace/);
+  assert.match(editor, /selectionDraft=\{postSelectionDraft\}/);
+  assert.match(editor, /onCreatePostFromSelection/);
   assert.match(editor, /urlState=\{\{\s*view:\s*["']all["'],\s*sort:\s*["']updated_at["'],\s*direction:\s*["']desc["']/s);
   assert.match(posts, /PostsWorkspace/);
   assert.match(posts, /PostEditor/);
   assert.match(posts, /garcia-editor:posts/);
+  assert.match(posts, /selectionDraft/);
   assert.match(posts, /\/projects\/project-/);
 });
 

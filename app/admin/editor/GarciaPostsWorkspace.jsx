@@ -47,13 +47,32 @@ function readStoredPosts() {
   }
 }
 
-export default function GarciaPostsWorkspace({ mediaAssets }) {
+export default function GarciaPostsWorkspace({ mediaAssets, selectionDraft, onSelectionDraftConsumed }) {
   const [posts, setPosts] = useState(seedPosts);
   const [selectedId, setSelectedId] = useState(seedPosts[0].entryId);
   const [mediaOpen, setMediaOpen] = useState(false);
   const [message, setMessage] = useState("");
 
   useEffect(() => setPosts(readStoredPosts()), []);
+  useEffect(() => {
+    if (!selectionDraft) return;
+    const post = {
+      ...createPost(selectionDraft.id, selectionDraft.title),
+      excerpt: selectionDraft.excerpt,
+      body: {
+        version: 1,
+        type: "doc",
+        content: (selectionDraft.paragraphs.length ? selectionDraft.paragraphs : [selectionDraft.excerpt]).map((text) => ({
+          type: "paragraph",
+          content: [{ type: "text", text }],
+        })),
+      },
+    };
+    setPosts((current) => [post, ...current.filter((candidate) => candidate.entryId !== post.entryId)]);
+    setSelectedId(post.entryId);
+    setMessage("Draft post created from the selected website areas.");
+    onSelectionDraftConsumed?.();
+  }, [onSelectionDraftConsumed, selectionDraft]);
   const selected = useMemo(() => posts.find((post) => post.entryId === selectedId) ?? posts[0], [posts, selectedId]);
   const list = posts.map((post) => ({
     entryId: post.entryId,

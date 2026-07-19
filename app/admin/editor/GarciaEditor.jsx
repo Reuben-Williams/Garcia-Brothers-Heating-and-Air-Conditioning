@@ -1,6 +1,5 @@
 "use client";
 
-import { isBuilderPreviewMessage } from "@your-builder/core";
 import { EditorShell } from "@your-builder/editor";
 import { GROWTH_DASHBOARD_MODULE } from "@your-builder/growth-dashboard";
 import {
@@ -27,17 +26,6 @@ const dashboardAccess = {
   customers: { effectiveRead: true, hasRecordCapability: true, state: "active" },
 };
 
-function selectedRegionFromMessage(message) {
-  return {
-    id: message.regionId,
-    kind: message.kind,
-    label: message.regionId.split(".").join(" "),
-    value: message.value ?? "",
-    alt: message.alt ?? "",
-    href: message.href ?? "",
-  };
-}
-
 function selectionFromSaved(regionId, value) {
   if (value.type === "image") return { id: regionId, kind: "image", label: regionId.split(".").join(" "), value: value.src, alt: value.alt ?? "" };
   if (value.type === "link") return { id: regionId, kind: "link", label: regionId.split(".").join(" "), value: value.label, href: value.href };
@@ -60,6 +48,7 @@ export default function GarciaEditor({ member, previewBaseUrl, initialPath = "/"
   const [workspace, setWorkspace] = useState("website.pages");
   const [currentPath, setCurrentPath] = useState(initialPath);
   const [selectedRegion, setSelectedRegion] = useState();
+  const [postSelectionDraft, setPostSelectionDraft] = useState();
   const [auditLog, setAuditLog] = useState([]);
   const [previewRevision, setPreviewRevision] = useState(0);
   const notificationsApi = useMemo(() => createNotificationsDemoApi(), []);
@@ -87,20 +76,6 @@ export default function GarciaEditor({ member, previewBaseUrl, initialPath = "/"
   }
 
   useEffect(() => { void refreshAudit(currentPath); }, [currentPath]);
-  useEffect(() => {
-    const previewOrigin = new URL(previewBaseUrl).origin;
-    function receivePreviewMessage(event) {
-      if (event.origin !== previewOrigin || !isBuilderPreviewMessage(event.data, site.siteId)) return;
-      if (event.data.type === "builder:select-region") {
-        setSelectedRegion(selectedRegionFromMessage(event.data));
-      } else if (event.data.type === "builder:navigate") {
-        const nextPath = event.data.pagePath.split(/[?#]/, 1)[0] || "/";
-        if (site.pages.some((page) => page.path === nextPath)) changePage(nextPath);
-      }
-    }
-    window.addEventListener("message", receivePreviewMessage);
-    return () => window.removeEventListener("message", receivePreviewMessage);
-  }, [previewBaseUrl]);
 
   function updateLocation(path, nextWorkspace) {
     const url = new URL(window.location.href);
@@ -132,6 +107,30 @@ export default function GarciaEditor({ member, previewBaseUrl, initialPath = "/"
     await builderRequest("/api/builder", { method: "PUT", body: JSON.stringify(input) });
     setPreviewRevision((revision) => revision + 1);
     await refreshAudit(input.pagePath);
+  }
+
+  async function linkSelectedRegions({ pagePath, regions, href }) {
+    await Promise.all(regions.map((region) => builderRequest("/api/builder", {
+      method: "POST",
+      body: JSON.stringify({
+        pagePath,
+        regionId: region.id,
+        value: { type: "link", label: region.value ?? region.label ?? region.id, href },
+      }),
+    })));
+    setPreviewRevision((revision) => revision + 1);
+    await refreshAudit(pagePath);
+  }
+
+  function createPostFromSelection({ regions }) {
+    const id = `selected-regions-${Date.now()}`;
+    setPostSelectionDraft({
+      id,
+      title: regions[0]?.label ?? "New website update",
+      excerpt: `Draft created from ${regions.length} selected website area${regions.length === 1 ? "" : "s"}.`,
+      paragraphs: regions.map((region) => region.value).filter(Boolean),
+    });
+    changeWorkspace("website.posts");
   }
 
   const resetDemo = () => window.location.reload();
@@ -176,9 +175,12 @@ export default function GarciaEditor({ member, previewBaseUrl, initialPath = "/"
         }}
         selectedRegion={selectedRegion}
         mediaAssets={mediaAssets}
-        postsWorkspace={<GarciaPostsWorkspace mediaAssets={mediaAssets} />}
+        postsWorkspace={<GarciaPostsWorkspace mediaAssets={mediaAssets} selectionDraft={postSelectionDraft} onSelectionDraftConsumed={() => setPostSelectionDraft(undefined)} />}
         onPageChange={changePage}
         onWorkspaceChange={changeWorkspace}
+        onRegionSelectionChange={({ primary }) => setSelectedRegion(primary)}
+        onLinkSelectedRegions={linkSelectedRegions}
+        onCreatePostFromSelection={createPostFromSelection}
         onSaveDraft={saveDraft}
         onPublish={publish}
         userViewUrl="/"

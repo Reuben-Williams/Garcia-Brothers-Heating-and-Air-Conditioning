@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "platformCommit": "5e62a8a7a2f99a9351d8f3be622db99a0b383914",
+  "platformCommit": "58518b55bcbc6fa1363c34d6613c8a56f6abd928",
   "packages": [
     { "file": "your-builder-cli-0.1.0.tgz", "sha256": "c58c772a499ca30c9dc7c29b81869e70d9e4c3fe085fb10c857643aa8c52d298" },
     { "file": "your-builder-content-0.1.0.tgz", "sha256": "f18b8630ad0c7c8a6a5540c4a30d6e85198da31a1cf99e25f0a1e91df187368c" },
-    { "file": "your-builder-core-0.1.0.tgz", "sha256": "f0157b1f6d0c07a9a21043379fdf10cb240e3eb2a0465718dabf7e34a3d7ac60" },
-    { "file": "your-builder-editor-0.1.0.tgz", "sha256": "c1db103652c93f090ec1ce109eb0b0b375c19a23f8d2ee2705972a84b8a4ba62" },
+    { "file": "your-builder-core-0.1.0.tgz", "sha256": "7701511ffac14976408a9ea6065bcbd4ad7437cf7c41252b70c17af252ab6590" },
+    { "file": "your-builder-editor-0.1.0.tgz", "sha256": "ba6290f42ae693cf7459edd32a30454e280d8d51ebcc255bdf8f8939133ce908" },
     { "file": "your-builder-entitlements-0.1.0.tgz", "sha256": "c44a2045ac0acaeefa0575352e9b4fdab9b4ddd2a91e6152a3a1dd125b8168dc" },
     { "file": "your-builder-feature-registry-0.1.0.tgz", "sha256": "c7f9253a0218037998d50cd10061068a397779ffea51f104e441b8dff9b82c74" },
     { "file": "your-builder-growth-core-0.1.0.tgz", "sha256": "a224f96329b69c25e3b7c6d3ac4d6fbe42fde26f1518d263ecf6fe469befc63c" },
     { "file": "your-builder-growth-customers-0.1.0.tgz", "sha256": "2d6d4a06a6e07e15a183967d0714e6a1a4f4636ac510c4dd68978050f97cb09c" },
     { "file": "your-builder-growth-dashboard-0.1.0.tgz", "sha256": "64f84eeb74ec0346797cd7838d9ffeaeb1168276415c8e363c0ce4f4ea688507" },
     { "file": "your-builder-growth-leads-0.1.0.tgz", "sha256": "f7dbbd58118b2f17f0fabc05551dcaf70cbb1034dafce113dc58fdedbe4bbc2f" },
-    { "file": "your-builder-next-0.1.0.tgz", "sha256": "2eed7feaa8cc246fa74bc8d503eeb0e0ad90d25dca533cb38ae896074d76adbf" }
+    { "file": "your-builder-next-0.1.0.tgz", "sha256": "28e271e38cf59fe1abfee6a62e4fa7e75996c73b95e45b8822fe794ed8be1279" }
   ]
 }
