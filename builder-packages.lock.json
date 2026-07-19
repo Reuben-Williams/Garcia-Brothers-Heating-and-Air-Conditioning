@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "platformCommit": "d88047b",
+  "platformCommit": "8d95ea9",
   "packages": [
-    { "file": "your-builder-cli-0.1.0.tgz", "sha256": "3a2f6524a37e46f4b83ead168e44ac51910ccad72623376b934d3e733d1fd210" },
+    { "file": "your-builder-cli-0.1.0.tgz", "sha256": "c58c772a499ca30c9dc7c29b81869e70d9e4c3fe085fb10c857643aa8c52d298" },
     { "file": "your-builder-content-0.1.0.tgz", "sha256": "f18b8630ad0c7c8a6a5540c4a30d6e85198da31a1cf99e25f0a1e91df187368c" },
     { "file": "your-builder-core-0.1.0.tgz", "sha256": "84f74368b14cce316b6d9bfcd0f3d9a3d11d5cf7e2a07995a31d98d6c319c26e" },
     { "file": "your-builder-editor-0.1.0.tgz", "sha256": "c09bbc93017273ac99b9d019fe14f991e18c58ae27b2b143f845f26155393b73" },

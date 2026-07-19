@@ -19,14 +19,14 @@ test("pins the guided installation CLI to the accepted platform package", async 
   const lock = await readJson("builder-packages.lock.json");
   const cli = lock.packages.find((entry) => entry.file === "your-builder-cli-0.1.0.tgz");
 
-  assert.equal(lock.platformCommit, "d88047b");
+  assert.equal(lock.platformCommit, "8d95ea9");
   assert.equal(
     packageJson.devDependencies["@your-builder/cli"],
     "file:.builder/cache/packages/your-builder-cli-0.1.0.tgz",
   );
   assert.deepEqual(cli, {
     file: "your-builder-cli-0.1.0.tgz",
-    sha256: "3a2f6524a37e46f4b83ead168e44ac51910ccad72623376b934d3e733d1fd210",
+    sha256: "c58c772a499ca30c9dc7c29b81869e70d9e4c3fe085fb10c857643aa8c52d298",
   });
 });
 
