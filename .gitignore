@@ -1,5 +1,6 @@
 .next/
 .netlify/
+netlify/.generated-functions/
 .next-stale-*/
 out/
 node_modules/

@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import test from "node:test";
 
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
@@ -56,6 +58,23 @@ test("uses a direct scheduled function without an HTTP worker route", async () =
   assert.match(source, /schedule:\s*"\*\/5 \* \* \* \*"/);
   assert.doesNotMatch(source, /fetch\s*\(/);
   assert.doesNotMatch(source, /SUPABASE_SERVICE_ROLE_KEY.*NEXT_PUBLIC_/);
+});
+
+test("prebundles the scheduled worker without portable package imports", async () => {
+  const outputDir = await mkdtemp(join(tmpdir(), "garcia-installation-worker-"));
+  try {
+    const { buildInstallationWorker } = await import("../scripts/build-installation-worker.mjs");
+    const outfile = join(outputDir, "installation-worker.mjs");
+    await buildInstallationWorker(outfile);
+    const bundle = await readFile(outfile, "utf8");
+
+    assert.match(bundle, /installation-worker/);
+    assert.match(bundle, /\*\/5 \* \* \* \*/);
+    assert.doesNotMatch(bundle, /from\s+["']@your-builder\//);
+    assert.doesNotMatch(bundle, /import\s*\(["']@your-builder\//);
+  } finally {
+    await rm(outputDir, { recursive: true, force: true });
+  }
 });
 
 test("documents every server-only installation variable", async () => {
