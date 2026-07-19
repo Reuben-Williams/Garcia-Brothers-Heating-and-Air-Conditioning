@@ -2,6 +2,7 @@ import { BadgeCheck, ClipboardCheck, MapPin } from "lucide-react";
 import BlurredPhoto from "@/components/BlurredPhoto";
 import PageHero from "@/components/PageHero";
 import { business, faqs } from "@/content/siteData.mjs";
+import { regionIds } from "@/builder/region-ids.mjs";
 
 export const metadata = {
   title: "About",
@@ -31,25 +32,25 @@ export default function AboutPage() {
               heat pump installation in a home with very limited attic access.
             </p>
             <div className="check-list" data-builder-region="about.proof.items" data-builder-kind="sections">
-              <div className="check-item">
+              <div className="check-item" data-builder-item-id="reputation" data-builder-item-label="Reputation">
                 <BadgeCheck size={22} />
                 <div>
-                  <h3>{business.rating} star reputation</h3>
-                  <p>{business.reviewCount} customer reviews are reflected in the business profile.</p>
+                  <h3 data-builder-region="about.proof.reputation.title" data-builder-kind="text">{business.rating} star reputation</h3>
+                  <p data-builder-region="about.proof.reputation.body" data-builder-kind="richText">{business.reviewCount} customer reviews are reflected in the business profile.</p>
                 </div>
               </div>
-              <div className="check-item">
+              <div className="check-item" data-builder-item-id="capability" data-builder-item-label="Complex-layout capability">
                 <ClipboardCheck size={22} />
                 <div>
-                  <h3>Complex-layout capability</h3>
-                  <p>Tight attics, old ductwork, and full system swaps are part of the review record.</p>
+                  <h3 data-builder-region="about.proof.capability.title" data-builder-kind="text">Complex-layout capability</h3>
+                  <p data-builder-region="about.proof.capability.body" data-builder-kind="richText">Tight attics, old ductwork, and full system swaps are part of the review record.</p>
                 </div>
               </div>
-              <div className="check-item">
+              <div className="check-item" data-builder-item-id="location" data-builder-item-label="Newark service base">
                 <MapPin size={22} />
                 <div>
-                  <h3>Newark service base</h3>
-                  <p>{business.address}</p>
+                  <h3 data-builder-region="about.proof.location.title" data-builder-kind="text">Newark service base</h3>
+                  <p data-builder-region="about.proof.location.body" data-builder-kind="richText">{business.address}</p>
                 </div>
               </div>
             </div>
@@ -75,11 +76,11 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="faq-grid" data-builder-region="collections.faqs" data-builder-kind="sections">
+          <div className="faq-grid" data-builder-region="about.faq.items" data-builder-kind="sections">
             {faqs.map((faq) => (
-              <article className="info-card" key={faq.question}>
-                <h3>{faq.question}</h3>
-                <p>{faq.answer}</p>
+              <article className="info-card" key={faq.id} data-builder-item-id={faq.id} data-builder-item-label={faq.question}>
+                <h3 data-builder-region={regionIds.faq(faq.id, "question")} data-builder-kind="text" data-builder-scope="global">{faq.question}</h3>
+                <p data-builder-region={regionIds.faq(faq.id, "answer")} data-builder-kind="richText" data-builder-scope="global">{faq.answer}</p>
               </article>
             ))}
           </div>

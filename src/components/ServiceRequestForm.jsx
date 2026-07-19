@@ -2,6 +2,7 @@
 
 import { CheckCircle2, Send } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { regionIds } from "@/builder/region-ids.mjs";
 
 const consentText = "I agree that Garcia Brothers may contact me about this service request.";
 
@@ -81,19 +82,19 @@ export default function ServiceRequestForm({ services }) {
 
   return (
     <form className="form-grid" onSubmit={submit} data-builder-region="forms.service-request" data-builder-kind="sections">
-      <div className="field"><label htmlFor="firstName">First name</label><input id="firstName" name="firstName" autoComplete="given-name" required maxLength="80" /></div>
-      <div className="field"><label htmlFor="lastName">Last name</label><input id="lastName" name="lastName" autoComplete="family-name" required maxLength="80" /></div>
-      <div className="field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" maxLength="320" /></div>
-      <div className="field"><label htmlFor="phone">Phone</label><input id="phone" name="phone" type="tel" autoComplete="tel" maxLength="30" /></div>
-      <div className="field"><label htmlFor="zipCode">Service ZIP code</label><input id="zipCode" name="zipCode" inputMode="numeric" autoComplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?" required maxLength="10" /></div>
-      <div className="field"><label htmlFor="urgency">Urgency</label><select id="urgency" name="urgency" defaultValue="standard"><option value="standard">Standard service</option><option value="urgent">Urgent, within 24 hours</option><option value="emergency">Emergency, no heat or cooling</option></select></div>
-      <div className="field full"><label htmlFor="service">Service needed</label><select id="service" name="service" defaultValue="" required><option value="" disabled>Select a service</option>{services.map((service) => <option key={service.slug} value={service.slug}>{service.title}</option>)}</select></div>
-      <div className="field full"><label htmlFor="message">What is happening?</label><textarea id="message" name="message" rows="5" required maxLength="2000" placeholder="Describe the system, symptoms, and when the issue started." /></div>
+      <div className="field"><label htmlFor="firstName" data-builder-region="forms.service-request.first-name.label" data-builder-kind="text">First name</label><input id="firstName" name="firstName" autoComplete="given-name" required maxLength="80" /></div>
+      <div className="field"><label htmlFor="lastName" data-builder-region="forms.service-request.last-name.label" data-builder-kind="text">Last name</label><input id="lastName" name="lastName" autoComplete="family-name" required maxLength="80" /></div>
+      <div className="field"><label htmlFor="email" data-builder-region="forms.service-request.email.label" data-builder-kind="text">Email</label><input id="email" name="email" type="email" autoComplete="email" maxLength="320" /></div>
+      <div className="field"><label htmlFor="phone" data-builder-region="forms.service-request.phone.label" data-builder-kind="text">Phone</label><input id="phone" name="phone" type="tel" autoComplete="tel" maxLength="30" /></div>
+      <div className="field"><label htmlFor="zipCode" data-builder-region="forms.service-request.zip.label" data-builder-kind="text">Service ZIP code</label><input id="zipCode" name="zipCode" inputMode="numeric" autoComplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?" required maxLength="10" /></div>
+      <div className="field"><label htmlFor="urgency" data-builder-region="forms.service-request.urgency.label" data-builder-kind="text">Urgency</label><select id="urgency" name="urgency" defaultValue="standard"><option value="standard" data-builder-region="forms.service-request.urgency.standard" data-builder-kind="text">Standard service</option><option value="urgent" data-builder-region="forms.service-request.urgency.urgent" data-builder-kind="text">Urgent, within 24 hours</option><option value="emergency" data-builder-region="forms.service-request.urgency.emergency" data-builder-kind="text">Emergency, no heat or cooling</option></select></div>
+      <div className="field full"><label htmlFor="service" data-builder-region="forms.service-request.service.label" data-builder-kind="text">Service needed</label><select id="service" name="service" defaultValue="" required><option value="" disabled data-builder-region="forms.service-request.service.placeholder" data-builder-kind="text">Select a service</option>{services.map((service) => <option key={service.slug} value={service.slug} data-builder-region={regionIds.service(service.slug, "title")} data-builder-kind="text" data-builder-scope="global" data-builder-instance={`service-form-option-${service.slug}`}>{service.title}</option>)}</select></div>
+      <div className="field full"><label htmlFor="message" data-builder-region="forms.service-request.message.label" data-builder-kind="text">What is happening?</label><textarea id="message" name="message" rows="5" required maxLength="2000" placeholder="Describe the system, symptoms, and when the issue started." data-builder-region="forms.service-request.message.placeholder" data-builder-kind="text" data-builder-target="placeholder" /></div>
       <label className="consent-field full"><input name="consentAcknowledged" type="checkbox" required /><span>{consentText}</span></label>
       <input type="hidden" name="cf-turnstile-response" value={token} readOnly />
       <div className="turnstile-field full" ref={turnstileHost} />
       {!siteKey ? <p className="form-status error full" role="status">Online requests are not configured on this staging environment. Please call (551) 379-0300.</p> : null}
-      <button className="button secondary" type="submit" disabled={!siteKey || status.state === "sending"}><Send size={18} />{status.state === "sending" ? "Sending..." : "Request service"}</button>
+      <button className="button secondary" type="submit" disabled={!siteKey || status.state === "sending"}><Send size={18} />{status.state === "sending" ? "Sending..." : <span data-builder-region="forms.service-request.submit.label" data-builder-kind="text">Request service</span>}</button>
       {status.message ? <p className={`form-status ${status.state} full`} role={status.state === "error" ? "alert" : "status"}>{status.state === "sent" ? <CheckCircle2 size={18} /> : null}{status.message}</p> : null}
     </form>
   );

@@ -28,6 +28,7 @@ test("Garcia editor supplies real project media and an interactive HVAC posts wo
   assert.match(editor, /onCreatePostFromSelection/);
   assert.match(editor, /urlState=\{\{\s*view:\s*["']all["'],\s*sort:\s*["']updated_at["'],\s*direction:\s*["']desc["']/s);
   assert.match(posts, /PostsWorkspace/);
+  assert.match(posts, /selectedEntryId=\{selectedId\}/);
   assert.match(posts, /PostEditor/);
   assert.match(posts, /garcia-editor:posts/);
   assert.match(posts, /selectionDraft/);

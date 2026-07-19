@@ -33,7 +33,7 @@ export default function ProjectsPage() {
               </p>
             </div>
           </div>
-          <div data-builder-region="projects.gallery.items" data-builder-kind="sections"><ProjectGallery /></div>
+          <ProjectGallery regionId="projects.gallery.items" />
         </div>
       </section>
     </>

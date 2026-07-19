@@ -25,7 +25,7 @@ export default function ServicesPage() {
               </p>
             </div>
           </div>
-          <div data-builder-region="collections.services" data-builder-kind="sections"><ServiceGrid detailed /></div>
+          <ServiceGrid detailed regionId="services.list.items" />
         </div>
       </section>
       <section className="section compact dark-band">

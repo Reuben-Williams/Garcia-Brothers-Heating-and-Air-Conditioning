@@ -106,7 +106,7 @@ export default function GarciaPostsWorkspace({ mediaAssets, selectionDraft, onSe
   return (
     <section>
       {message ? <p role="status">{message}</p> : null}
-      <PostsWorkspace posts={list} loading={false} onCreate={createNew} onSelect={setSelectedId}>
+      <PostsWorkspace posts={list} loading={false} selectedEntryId={selectedId} onCreate={createNew} onSelect={setSelectedId}>
         <PostEditor value={selected} saving={false} onChange={updateSelected} onSave={save} onOpenMedia={() => setMediaOpen((open) => !open)} showPublishingPanel={false} />
         {mediaOpen ? (
           <div aria-label="Post media gallery" style={styles.mediaGrid}>

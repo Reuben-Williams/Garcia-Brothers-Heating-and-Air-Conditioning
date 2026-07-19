@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "platformCommit": "58518b55bcbc6fa1363c34d6613c8a56f6abd928",
+  "platformCommit": "9504b31f6a99250aea19a599270fc4363ac85ff4",
   "packages": [
-    { "file": "your-builder-cli-0.1.0.tgz", "sha256": "c58c772a499ca30c9dc7c29b81869e70d9e4c3fe085fb10c857643aa8c52d298" },
+    { "file": "your-builder-cli-0.1.0.tgz", "sha256": "26e188ddf178e029ce2ca2c74b8f3a0a9f14c5742c296ebb69d6ec1136ce3fbe" },
     { "file": "your-builder-content-0.1.0.tgz", "sha256": "f18b8630ad0c7c8a6a5540c4a30d6e85198da31a1cf99e25f0a1e91df187368c" },
-    { "file": "your-builder-core-0.1.0.tgz", "sha256": "7701511ffac14976408a9ea6065bcbd4ad7437cf7c41252b70c17af252ab6590" },
-    { "file": "your-builder-editor-0.1.0.tgz", "sha256": "ba6290f42ae693cf7459edd32a30454e280d8d51ebcc255bdf8f8939133ce908" },
+    { "file": "your-builder-core-0.1.0.tgz", "sha256": "135dfcf1d074536ea89a05d08cfe7aa73c9da590cb95826103806213ffc6b2d6" },
+    { "file": "your-builder-editor-0.1.0.tgz", "sha256": "1e676661897ae7b6178045170cc86320d24224384887ba3da73067ab8fc55d9f" },
     { "file": "your-builder-entitlements-0.1.0.tgz", "sha256": "c44a2045ac0acaeefa0575352e9b4fdab9b4ddd2a91e6152a3a1dd125b8168dc" },
     { "file": "your-builder-feature-registry-0.1.0.tgz", "sha256": "c7f9253a0218037998d50cd10061068a397779ffea51f104e441b8dff9b82c74" },
     { "file": "your-builder-growth-core-0.1.0.tgz", "sha256": "a224f96329b69c25e3b7c6d3ac4d6fbe42fde26f1518d263ecf6fe469befc63c" },
     { "file": "your-builder-growth-customers-0.1.0.tgz", "sha256": "2d6d4a06a6e07e15a183967d0714e6a1a4f4636ac510c4dd68978050f97cb09c" },
     { "file": "your-builder-growth-dashboard-0.1.0.tgz", "sha256": "64f84eeb74ec0346797cd7838d9ffeaeb1168276415c8e363c0ce4f4ea688507" },
     { "file": "your-builder-growth-leads-0.1.0.tgz", "sha256": "f7dbbd58118b2f17f0fabc05551dcaf70cbb1034dafce113dc58fdedbe4bbc2f" },
-    { "file": "your-builder-next-0.1.0.tgz", "sha256": "28e271e38cf59fe1abfee6a62e4fa7e75996c73b95e45b8822fe794ed8be1279" }
+    { "file": "your-builder-next-0.1.0.tgz", "sha256": "cede84f79bf84c1bc08689253f4d7901f9d25fd0ebe9d09e294eec139e9c24d9" }
   ]
 }

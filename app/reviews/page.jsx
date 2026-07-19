@@ -19,7 +19,7 @@ export default function ReviewsPage() {
           <div className="rating-panel">
             <div>
               <span className="eyebrow" data-builder-region="reviews.summary.eyebrow" data-builder-kind="text">Google review summary</span>
-              <h2>{business.rating} stars from {business.reviewCount} reviews</h2>
+              <h2 data-builder-region="reviews.summary.title" data-builder-kind="text">{business.rating} stars from {business.reviewCount} reviews</h2>
               <p className="section-lead" data-builder-region="reviews.summary.body" data-builder-kind="richText">
                 The examples below highlight furnace replacement, heat pump
                 installation, ductwork redesign, holiday AC repair, and tune-up
@@ -30,7 +30,7 @@ export default function ReviewsPage() {
               Read reviews on Google
             </a>
           </div>
-          <div data-builder-region="reviews.list.items" data-builder-kind="sections"><Reviews /></div>
+          <Reviews regionId="reviews.list.items" />
         </div>
       </section>
     </>

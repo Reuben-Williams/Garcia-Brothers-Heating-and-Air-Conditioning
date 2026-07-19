@@ -20,12 +20,20 @@ export default function BlurredPhoto({
   className = "",
   children,
   regionId,
+  regionScope,
+  regionInstance,
 }) {
   const versionedSrc = withCacheVersion(src);
   const fetchPriority = priority ? "high" : "auto";
 
   return (
-    <div className={`blurred-photo ${className}`} data-builder-region={regionId} data-builder-kind={regionId ? "image" : undefined}>
+    <div
+      className={`blurred-photo ${className}`}
+      data-builder-region={regionId}
+      data-builder-kind={regionId ? "image" : undefined}
+      data-builder-scope={regionId ? regionScope : undefined}
+      data-builder-instance={regionId ? regionInstance : undefined}
+    >
       <img
         aria-hidden="true"
         alt=""

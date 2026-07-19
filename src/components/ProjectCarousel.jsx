@@ -3,6 +3,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import BlurredPhoto from "@/components/BlurredPhoto";
+import { regionIds } from "@/builder/region-ids.mjs";
 
 function getProjectIndexFromHash(projects) {
   if (typeof window === "undefined") {
@@ -58,12 +59,15 @@ export default function ProjectCarousel({ projects }) {
           alt={project.alt}
           sizes="(max-width: 980px) 100vw, 58vw"
           priority
+          regionId={regionIds.project(project.id, "image")}
+          regionScope="global"
+          regionInstance={`project-spotlight-${project.id}-image`}
         />
       </div>
       <div className="carousel-copy">
         <div>
-          <h2>{project.title}</h2>
-          <p>{project.summary}</p>
+          <h2 data-builder-region={regionIds.project(project.id, "title")} data-builder-kind="text" data-builder-scope="global" data-builder-instance={`project-spotlight-${project.id}-title`}>{project.title}</h2>
+          <p data-builder-region={regionIds.project(project.id, "summary")} data-builder-kind="richText" data-builder-scope="global" data-builder-instance={`project-spotlight-${project.id}-summary`}>{project.summary}</p>
         </div>
         <div className="carousel-controls" aria-label="Carousel controls">
           <button

@@ -23,12 +23,12 @@ export const hours = [
 ];
 
 export const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
-  { label: "Reviews", href: "/reviews" },
-  { label: "Contact", href: "/contact" },
+  { id: "home", label: "Home", href: "/" },
+  { id: "services", label: "Services", href: "/services" },
+  { id: "projects", label: "Projects", href: "/projects" },
+  { id: "about", label: "About", href: "/about" },
+  { id: "reviews", label: "Reviews", href: "/reviews" },
+  { id: "contact", label: "Contact", href: "/contact" },
 ];
 
 export const services = [
@@ -151,36 +151,42 @@ export const services = [
 
 export const reviews = [
   {
+    id: "collin-soto",
     name: "Collin Soto",
     location: "Newark furnace installation",
     quote:
       "Peyton, Bryce, and Edwin made the furnace installation smooth after our heater failed. They explained the new system clearly and the house was so comfortable I had to lower the thermostat.",
   },
   {
+    id: "santiago-cantu",
     name: "Santiago Cantu",
     location: "Same-day heating system replacement",
     quote:
       "Bryce and Edwin removed the old furnace and all of the existing ductwork, installed a brand new heating system, and had even warmth restored to every room by that same evening.",
   },
   {
+    id: "ruth11-h",
     name: "Ruth11 H",
     location: "Heat pump and tight attic ductwork",
     quote:
       "Bryce and Peyton solved a cramped attic access problem while installing a new heat pump and redoing all of the ductwork, completing work other contractors had turned down.",
   },
   {
+    id: "brittney24-g",
     name: "Brittney24 G",
     location: "Newark furnace repair",
     quote:
       "From the first phone call about furnace repair pricing, the office and technician Preston were thoughtful, listened carefully, and stayed focused on doing a good job.",
   },
   {
+    id: "preston-willis",
     name: "Preston Willis",
     location: "Holiday AC repair",
     quote:
       "After using Garcia Brothers for AC repair several times, we still felt confident calling on a holiday when the air conditioner stopped working and Trenton came right away.",
   },
   {
+    id: "patrick-pearson",
     name: "patrick pearson",
     location: "Furnace tune-up",
     quote:
@@ -190,38 +196,45 @@ export const reviews = [
 
 export const faqs = [
   {
+    id: "tight-attic",
     question:
       "Can Garcia Brothers handle a heat pump installation in a home with very limited attic space?",
     answer:
       "Yes. Ruth11 H's review describes Bryce and Peyton installing a new heat pump and rerouting all ductwork in a cramped attic, completing a job other contractors had declined.",
   },
   {
+    id: "after-hours",
     question: "What happens if my heater fails on a holiday evening in Newark?",
     answer:
       "Garcia Brothers lists 24-hour availability every day of the week, including weekends and holidays, so homeowners can call after hours for urgent heating or cooling help.",
   },
   {
+    id: "replacement-timeline",
     question: "How long does a full furnace and ductwork replacement take?",
     answer:
       "Santiago Cantu's review describes Bryce and Edwin removing the old furnace and ductwork and getting a brand new heating system running by that same evening.",
   },
   {
+    id: "equipment-brands",
     question: "Are Bryant or other national brands part of the equipment options?",
     answer:
       "Customer review material mentions recognizable national equipment brands, including Bryant and Lennox, as part of completed HVAC projects.",
   },
   {
+    id: "thermostat-setting",
     question: "Should I lower my thermostat after a new furnace is installed?",
     answer:
       "Collin Soto's review says the new furnace performed strongly enough that the thermostat setting had to be lowered to keep the home comfortable.",
   },
   {
+    id: "compact-equipment",
     question:
       "What should I do if my old furnace and basement air handler are taking up too much space?",
     answer:
       "Garcia Brothers can evaluate replacement options such as a compact heat pump, including removal of oversized older equipment when the layout calls for it.",
   },
   {
+    id: "system-walkthrough",
     question: "Will the technician explain how the new system works before leaving?",
     answer:
       "Yes. Multiple reviews describe technicians walking homeowners through the new equipment, answering questions, and explaining the work before leaving the property.",

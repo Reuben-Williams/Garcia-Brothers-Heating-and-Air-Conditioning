@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import BlurredPhoto from "@/components/BlurredPhoto";
 import { business, services } from "@/content/siteData.mjs";
+import { regionIds } from "@/builder/region-ids.mjs";
 
 function getServiceIndexFromHash() {
   if (typeof window === "undefined") {
@@ -52,21 +53,24 @@ export default function ServiceHeroCarousel() {
           alt={service.heroImage.alt}
           sizes="(max-width: 980px) 100vw, 52vw"
           priority
+          regionId={regionIds.service(service.slug, "hero-image")}
+          regionScope="global"
+          regionInstance={`service-spotlight-${service.slug}-image`}
         />
       </div>
 
       <div className="service-hero-copy">
-        <span className="eyebrow">{service.heroLabel}</span>
-        <h1>{service.title}</h1>
-        <p>{service.heroSummary}</p>
+        <span className="eyebrow" data-builder-region={regionIds.service(service.slug, "hero-label")} data-builder-kind="text" data-builder-scope="global" data-builder-instance={`service-spotlight-${service.slug}-label`}>{service.heroLabel}</span>
+        <h1 data-builder-region={regionIds.service(service.slug, "title")} data-builder-kind="text" data-builder-scope="global" data-builder-instance={`service-spotlight-${service.slug}-title`}>{service.title}</h1>
+        <p data-builder-region={regionIds.service(service.slug, "hero-summary")} data-builder-kind="richText" data-builder-scope="global" data-builder-instance={`service-spotlight-${service.slug}-summary`}>{service.heroSummary}</p>
         <div className="service-hero-actions">
-          <Link className="button primary" href={service.contactHref}>
+          <Link className="button primary" href={service.contactHref} data-builder-region={regionIds.service(service.slug, "request-cta")} data-builder-kind="link" data-builder-scope="global" data-builder-instance={`service-spotlight-${service.slug}-request`}>
             <MessageSquareText size={18} />
-            Request Service
+            <span data-builder-link-label>Request Service</span>
           </Link>
-          <a className="button ghost" href={business.phoneHref}>
+          <a className="button ghost" href={business.phoneHref} data-builder-region="global.business.phone" data-builder-kind="link" data-builder-scope="global" data-builder-instance="service-spotlight-phone">
             <Phone size={18} />
-            Call Now
+            <span data-builder-link-label>Call Now</span>
           </a>
         </div>
         <div className="service-picker" aria-label="Choose a service">
@@ -78,7 +82,7 @@ export default function ServiceHeroCarousel() {
               onClick={() => updateService(itemIndex)}
               type="button"
             >
-              {item.title}
+              <span data-builder-region={regionIds.service(item.slug, "title")} data-builder-kind="text" data-builder-scope="global" data-builder-instance={`service-picker-${item.slug}`}>{item.title}</span>
             </button>
           ))}
         </div>

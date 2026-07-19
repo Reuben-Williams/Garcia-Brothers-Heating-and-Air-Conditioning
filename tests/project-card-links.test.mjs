@@ -8,7 +8,7 @@ test("project gallery cards link to project hero selections", () => {
   assert.doesNotMatch(source, /from "next\/link"/);
   assert.match(source, /NEXT_PUBLIC_SITE_BASE_PATH/);
   assert.match(source, /href=\{projectHref\(project\.id\)\}/);
-  assert.doesNotMatch(source, /id=\{project\.id\}/);
+  assert.doesNotMatch(source, /\sid=\{project\.id\}/);
   assert.match(source, /aria-label=\{`View project details for \$\{project\.title\}`\}/);
 });
 

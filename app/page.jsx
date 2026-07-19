@@ -14,8 +14,8 @@ export default function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="eyebrow" data-builder-region="home.hero.eyebrow" data-builder-kind="text">
-              <Clock size={18} /> 24/7 emergency service
+            <span className="eyebrow">
+              <Clock size={18} /> <span data-builder-region="home.hero.eyebrow" data-builder-kind="text">24/7 emergency service</span>
             </span>
             <h1 data-builder-region="home.hero.title" data-builder-kind="text">{fallbackHeroTitle}</h1>
             <p data-builder-region="home.hero.body" data-builder-kind="richText">
@@ -26,7 +26,7 @@ export default function HomePage() {
             <div className="hero-actions">
               <a className="button primary" href={business.phoneHref} data-builder-region="home.hero.primary-cta" data-builder-kind="link">
                 <Phone size={18} />
-                Call Now
+                <span data-builder-link-label>Call Now</span>
               </a>
               <Link className="button ghost" href="/projects" data-builder-region="home.hero.secondary-cta" data-builder-kind="link">
                 View Projects
@@ -42,11 +42,11 @@ export default function HomePage() {
               sizes="(max-width: 980px) 100vw, 54vw"
               priority
           >
-            <div className="hero-card" data-builder-region="home.hero.reputation-note" data-builder-kind="richText">
+            <div className="hero-card">
               <span className="icon-chip">
                 <ShieldCheck size={24} />
               </span>
-              <div>
+              <div data-builder-region="home.hero.reputation-note" data-builder-kind="richText">
                 <strong>{business.rating} stars from {business.reviewCount} reviews</strong>
                 <span>Open 24 hours every day for urgent HVAC calls.</span>
               </div>
@@ -69,7 +69,7 @@ export default function HomePage() {
               All Services
             </Link>
           </div>
-          <ServiceGrid />
+          <ServiceGrid regionId="home.services.items" />
         </div>
       </section>
 
@@ -92,18 +92,18 @@ export default function HomePage() {
               explanations and careful service.
             </p>
             <div className="check-list" data-builder-region="home.local-proof.items" data-builder-kind="sections">
-              <div className="check-item">
+              <div className="check-item" data-builder-item-id="residential" data-builder-item-label="Residential HVAC focus">
                 <BadgeCheck size={22} />
                 <div>
-                  <h3>Residential HVAC focus</h3>
-                  <p>Heating, cooling, ductwork, and air-quality work for local homes.</p>
+                  <h3 data-builder-region="home.local-proof.residential.title" data-builder-kind="text">Residential HVAC focus</h3>
+                  <p data-builder-region="home.local-proof.residential.body" data-builder-kind="richText">Heating, cooling, ductwork, and air-quality work for local homes.</p>
                 </div>
               </div>
-              <div className="check-item">
+              <div className="check-item" data-builder-item-id="workmanship" data-builder-item-label="Review-backed workmanship">
                 <BadgeCheck size={22} />
                 <div>
-                  <h3>Review-backed workmanship</h3>
-                  <p>Named reviews highlight speed, communication, and technical skill.</p>
+                  <h3 data-builder-region="home.local-proof.workmanship.title" data-builder-kind="text">Review-backed workmanship</h3>
+                  <p data-builder-region="home.local-proof.workmanship.body" data-builder-kind="richText">Named reviews highlight speed, communication, and technical skill.</p>
                 </div>
               </div>
             </div>
@@ -125,7 +125,7 @@ export default function HomePage() {
               Open Gallery
             </Link>
           </div>
-          <div data-builder-region="collections.featured-projects" data-builder-kind="sections"><ProjectGallery limit={4} /></div>
+          <ProjectGallery limit={4} regionId="home.projects.items" />
         </div>
       </section>
 
@@ -139,7 +139,7 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <Reviews limit={3} />
+          <Reviews limit={3} regionId="home.reviews.items" />
         </div>
       </section>
     </>
