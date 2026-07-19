@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 import test from "node:test";
 
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
@@ -72,6 +73,8 @@ test("prebundles the scheduled worker without portable package imports", async (
     assert.match(bundle, /\*\/5 \* \* \* \*/);
     assert.doesNotMatch(bundle, /from\s+["']@your-builder\//);
     assert.doesNotMatch(bundle, /import\s*\(["']@your-builder\//);
+    const worker = await import(`${pathToFileURL(outfile).href}?test=${Date.now()}`);
+    assert.equal(typeof worker.default, "function");
   } finally {
     await rm(outputDir, { recursive: true, force: true });
   }

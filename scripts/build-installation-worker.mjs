@@ -18,6 +18,7 @@ export async function buildInstallationWorker(outfile = defaultOutfile) {
     target: "node22",
     format: "esm",
     packages: "bundle",
+    conditions: ["react-server"],
     legalComments: "none",
     logLevel: "warning",
   });
